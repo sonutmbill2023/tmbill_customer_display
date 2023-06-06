@@ -1,0 +1,83 @@
+.main{
+ 
+    
+    min-width:350px;
+    min-height: 669px;
+    margin-left: 35px;
+    font-family: "Gill Sans", sans-serif;
+    line-height: 0.4;
+    box-shadow: 0 0px 4px 0 #00000033, 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.header{
+    color:white;
+    background-color:#6ba613;
+ padding-left:10px;
+ padding-top:8px;
+padding-bottom:5px;
+box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+ 
+ 
+height:80px;
+position: relative;
+}
+.header h4{
+margin-top:12px;
+font-family: "Gill Sans", sans-serif;
+font-weight:530;
+font-style: normal;
+font-size:18px;
+
+}
+
+ 
+
+
+   .table  table th{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    
+    
+  } 
+
+  .table    table td{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    
+  }
+
+  .amount{
+    margin-top:50px;
+    margin-left: 10px;
+  }
+  .amount h3{
+    font-weight:bolder;
+    color:black;
+    font-size:19px;
+  }
+  .amount h1{
+    font-weight:bolder;
+    color:rgb(14, 59, 21);
+  }
+
+  .footer{
+display: flex;
+  }
+
+  .pay{
+    margin-left:30px;
+margin-top:10px;
+}
+  .pay h6{
+    font-weight:bolder;
+    font-size:15px;
+    color: black;
+
+  }
+
+  .pay img{
+    width:150px;
+    height:150px;
+    border:8px solid #6ba613 ;
+  }

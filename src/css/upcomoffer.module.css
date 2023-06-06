@@ -1,0 +1,26 @@
+ 
+.offer img{
+    margin-left:220px;
+    margin-top: 60px;
+    width:300px;
+    height:55px;
+}
+
+.ico img{
+    margin-top:90px;
+    margin-left:30px;
+    width:100px;
+    height:40px;
+}
+.img{
+    display: flex;
+margin-left:15px;
+}
+.img  img{
+    width:195px;
+    height:340px;
+    margin-top: 80px;
+    margin-left: 12px;
+    border-radius:25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
