@@ -3,12 +3,35 @@ import classes from '../css/customerpage.module.css'
  
 import Qrimg from '../asset/qr_pay.jpg' 
 import UpcomingOffer from './UpcomingOffer'
+ import { useEffect } from 'react' 
+
+import { io } from 'socket.io-client'
+
+
+
+
+
+function CustomerPage(props) {
+const socket = io.connect(`http://192.168.208.1:3000/?token=${props.token}`) ;
+  
+  useEffect(()=>{
+    socket.on("kot-saved",(data)=>{
+      console.log(data,'from socket')
+      console.log('useEffect running')
+    })
+  },[])
  
   
-function CustomerPage() {
+  
+ 
+
+ console.log( props.token,"from customer apge")
+  
   return (
+    
+
     <div style={{display:'flex'}}>
-      <UpcomingOffer/>
+       <UpcomingOffer/>
       <div className={classes.main}>
 
       <div className={classes.header}>
@@ -98,7 +121,9 @@ function CustomerPage() {
         </div>
       </div>
     </div>
-  )
+  )  
+  
+  
 }
 
 export default CustomerPage

@@ -1,0 +1,76 @@
+.login{
+    display: flex;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.formoutline{
+    width:510px;
+}
+.form input {
+     padding:8px;
+     color: rgb(179, 176, 176);
+     border-radius:6px;
+     border:1px solid #dcd8d8e8;
+    margin-top: 5px;
+    margin-bottom:5px;
+    background-color:#f4f4f4e8;
+   
+   width:100%;
+   min-width:100px;
+}
+
+.form button{
+    margin-left:440px;
+    margin-top:15px;
+}
+
+
+/* ************************popup */
+
+.top{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+     position:absolute;
+     top:50%;
+     left:50%;
+     transform: translate(-50%,-50%);
+}
+.popup{
+    border:2px solid rgb(219, 217, 217);
+    display: flex;
+   
+    align-items: center;
+    width:400px;
+    height:90px;
+    border-radius:10px;
+    line-height:0.8;
+    
+   
+}
+.popup p{
+    padding-left:10px;
+    margin-left:10px;
+    margin-top:8px;
+}
+.popup button {
+    margin-left:187px;
+}
+
+.input input{
+    padding:5px;
+     color: rgb(179, 176, 176);
+     border-radius:6px;
+     border:1px solid #dcd8d8e8;
+    margin-top: 5px;
+    margin-bottom:5px;
+    margin-left:5px;
+    background-color:#f4f4f4e8;
+   
+   width:100%;
+   min-width:100px;
+
+}
