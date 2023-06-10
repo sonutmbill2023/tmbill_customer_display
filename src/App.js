@@ -7,9 +7,11 @@ import LoginPage from './Component/LoginPage'
 
 function App() {
   const [token,setToken] = useState('')
-   const getTokenHandler=(logintoken)=>{
+  const [ipadd,setipadd] = useState('')
+   const getTokenHandler=(logintoken,ipaddress)=>{
 setToken(logintoken)
-console.log("token fro app compoennt",logintoken)
+ 
+setipadd(ipaddress)
    }
   return (
     <div  className="app">
@@ -21,7 +23,7 @@ console.log("token fro app compoennt",logintoken)
       <LoginPage getTokenHandler={getTokenHandler} />
     </Route>
     <Route path="/CustomerPage">
-<CustomerPage  token={token}/>
+<CustomerPage  token={token} ipadd={ipadd}/>
     </Route>
     <Route path="*">
       <Redirect to='/Loginpage'/>

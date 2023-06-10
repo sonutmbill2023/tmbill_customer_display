@@ -28,6 +28,7 @@ function LoginPage(props) {
       .then((res) => {
         console.log("result::", res.data);
         props.getTokenHandler(res.data.token)
+        
         alert(res.data.message);
         if (res.data.message == "Success") {
           history.push("/CustomerPage");
