@@ -47,25 +47,22 @@ function CustomerPage(props) {
     });
   }, []);
 
-  console.log(tableData, "from customer page data");
-  console.log(props.ipadd)
-
+  
 /************************** */
 useEffect(()=>{
 QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}` 
  
 ).then((res)=>{ 
   setQrSrc(res)
-  console.log(res,'from qrcode')
-  console.log('____-')
+  
+  
 })
 .catch((err)=>{
   console.log(err)
 })
 },[tableData])
 
- console.log(String(tableData?.billDetails?.field2)
-  ,'from bill etails')
+ 
 
   return (
     <div style={{ display: "flex" }}>
