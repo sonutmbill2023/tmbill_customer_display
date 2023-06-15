@@ -12,6 +12,7 @@ function App() {
 setToken(logintoken)
  
 setipadd(ipaddress)
+console.log(ipaddress,'from app component')
    }
   return (
     <div  className="app">
@@ -23,7 +24,7 @@ setipadd(ipaddress)
       <LoginPage getTokenHandler={getTokenHandler} />
     </Route>
     <Route path="/CustomerPage">
-<CustomerPage  token={token} ipadd={ipadd}/>
+<CustomerPage  token={token} ipadd ={ipadd}/>
     </Route>
     <Route path="*">
       <Redirect to='/Loginpage'/>

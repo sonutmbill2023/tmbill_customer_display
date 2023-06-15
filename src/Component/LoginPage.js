@@ -27,7 +27,7 @@ function LoginPage(props) {
       })
       .then((res) => {
         console.log("result::", res.data);
-        props.getTokenHandler(res.data.token)
+        props.getTokenHandler(res.data.token,takepopinput)
         
         alert(res.data.message);
         if (res.data.message == "Success") {
@@ -35,7 +35,7 @@ function LoginPage(props) {
         }
       })
       .catch((error) => {
-        console.log(error.message, "from error");
+        console.log(error, "from error");
       });
   };
 
@@ -48,7 +48,7 @@ function LoginPage(props) {
     setshowLogin(true);
   };
   console.log(takepopinput, "form pop sumit handler");
-  console.log(data);
+  
 
   return (
     <div>
@@ -116,8 +116,13 @@ function LoginPage(props) {
               </div>
             </div>
           </div>
+         
         </div>
+
+        
       )}
+
+
     </div>
   );
 }
