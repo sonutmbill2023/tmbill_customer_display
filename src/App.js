@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CustomerPage from './Component/CustomerPage'
-import PopUp from './Component/PopUp'
+
+
 import { Route,Switch,Redirect } from 'react-router-dom'
 import './App.css'
 import LoginPage from './Component/LoginPage'

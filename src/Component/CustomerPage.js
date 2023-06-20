@@ -83,7 +83,7 @@ QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`
                 <th>Amount</th>
               </tr>
             </thead>
-            {tableData?.billItems?.map((item) => (
+            {/* {tableData?.billItems?.map((item) => (
               <tbody key={item.item_id}>
                 <tr>
                   <td>{item.title}</td>
@@ -91,7 +91,162 @@ QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`
                   <td>{item.amount}</td>
                 </tr>
               </tbody>
-            ))}
+            ))} */}
+
+
+            <tbody>
+            <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+  <tr>
+   <td>Hillary</td>
+   <td>Nyakundi</td>
+   <td>tables@mail.com</td>
+  </tr>
+  <tr>
+    <td>Lary</td>
+    <td>Mak</td>
+    <td>developer@mail.com</td>
+  </tr>
+
+            </tbody>
           </table>     
          
 </div>
@@ -103,8 +258,8 @@ QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`
           </div>
           <div className={classes.pay}>
             <h6>SCAN TO PAY</h6>
-            {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}     
-            
+             {/* {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}      */}
+             <img src={Qrimg} alt="qr" />
           </div>
         </div>
       </div>
