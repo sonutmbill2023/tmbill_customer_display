@@ -7,11 +7,11 @@ import offer2 from "../asset/offer2.jpg";
 import "../css/imageUpload.css";
 import CloseIcon from "@mui/icons-material/Close";
 import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 function UpcomingOffer() {
-  const history = useHistory()
+  const history = useHistory();
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
 
@@ -19,7 +19,7 @@ function UpcomingOffer() {
   const [uploadfile, setUploadFile] = useState(false);
   const imageHandler1 = (e) => {
     const file = e.target.files[0];
-
+    localStorage.setItem("file1", file.name);
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
@@ -33,7 +33,7 @@ function UpcomingOffer() {
 
   const imageHandler2 = (e) => {
     const file = e.target.files[0];
-
+    localStorage.setItem("file2", file.name);
     if (file) {
       const reader = new FileReader();
 
@@ -50,7 +50,7 @@ function UpcomingOffer() {
 
   const imageHandler3 = (e) => {
     const file = e.target.files[0];
-
+    localStorage.setItem("file3", file.name);
     if (file) {
       const reader = new FileReader();
 
@@ -69,17 +69,19 @@ function UpcomingOffer() {
     if (savedImage1) {
       setImage1(savedImage1);
     }
-const savedImage2 = localStorage.getItem("image2")
+    const savedImage2 = localStorage.getItem("image2");
 
-if(savedImage2){
-  setImage2(savedImage2)
-}
+    if (savedImage2) {
+      setImage2(savedImage2);
+    }
 
-const savedImage3 = localStorage.getItem("image3")
-if(savedImage3){
-  setImage3(savedImage3)
-}
+    const savedImage3 = localStorage.getItem("image3");
+    if (savedImage3) {
+      setImage3(savedImage3);
+    }
   }, []);
+
+  console.log(localStorage.getItem("image1"), "form offer page ");
 
   return (
     <div className={classes.main}>
@@ -95,7 +97,7 @@ if(savedImage3){
           )}
         </div>
         <div>
-          {localStorage.getItem("image2")? (
+          {localStorage.getItem("image2") ? (
             <img src={image2} alt="offer1" />
           ) : (
             <img src={offer2} alt="offer1" />
@@ -136,18 +138,38 @@ if(savedImage3){
             </div>
             <div className={classes.imglabel}>
               <div className="uploadimage">
-                <label htmlFor="imgs1">Offer1</label>
+              <section>Image - 1</section>
                 <input id="imgs1" type="file" onChange={imageHandler1} />
+                <label htmlFor="imgs1">  Choose File</label>
+                <span>
+                  {localStorage.getItem("file1")
+                    ? localStorage.getItem("file1")
+                    : "offer1.jpeg"}
+                </span>
               </div>
 
               <div className="uploadimage">
-                <label htmlFor="imgs2">Offer2</label>
+              <section>Image - 2</section>
                 <input id="imgs2" type="file" onChange={imageHandler2} />
+              
+                <label htmlFor="imgs2">  Choose File</label>
+                <span>
+                  {localStorage.getItem("file2")
+                    ? localStorage.getItem("file2")
+                    : "offer2.jpeg"}
+                </span>
               </div>
 
               <div className="uploadimage">
-                <label htmlFor="imgs3">Offer3</label>
+                {/* <label htmlFor="imgs3">Offer3</label> */}
+                <section>Image - 3</section>
                 <input id="imgs3" type="file" onChange={imageHandler3} />
+                <label   htmlFor="imgs3">  Choose File</label>
+                <span >
+                  {localStorage.getItem("file3")
+                    ? localStorage.getItem("file3")
+                    : "offer3.jpeg"}
+                </span>
               </div>
             </div>
           </div>
@@ -164,8 +186,11 @@ if(savedImage3){
           <SettingsIcon />
         </button>
 
-        <button   className="btn btn-default btn-sm" onClick={()=>history.push('/Loginpage')}>
-        <LogoutIcon/>
+        <button
+          className="btn btn-default btn-sm"
+          onClick={() => history.push("/Loginpage")}
+        >
+          <LogoutIcon />
         </button>
       </div>
     </div>

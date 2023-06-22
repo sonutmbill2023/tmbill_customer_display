@@ -5,19 +5,36 @@
   align-items: center;
 }
 
-.uploadimage label{
+.uploadimage  section{
     padding: 8px;
     margin-top: 5px;
     font-weight:bolder;
 }
 .uploadimage input {
-    margin-left:10px;
-    margin-top: 5px;
+  display: none;
+}
+
+.uploadimage label{
+  background-color:lightgrey;
+ border:1px solid  grey;
+ border-top-left-radius:4px;
+ border-bottom-left-radius:4px;
+  padding:3px;
+  font-size:16px;
+  margin-left: 20px;
+  margin-right: 0px;
+}
+.uploadimage  span {
+     
+    width:230px;
     margin-right:10px;
     background-color: #6ba613;
     color: white;
     font-size:16px;
-    border-radius:2px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px ;
+    padding: 4px;
+    overflow:hidden;
 }
 
 .uploadicon {
@@ -33,20 +50,10 @@
    
 }
  
-@media only screen and (max-width: 1366px)     {
-  .uploadicon {
-    margin-top: 80px;
-    margin-left:-8px;
-   
-  }
-  .uploadicon svg {
-    size: 18px;
-     
-  }
-}
- 
-/*
 
+ 
+ /*
+ 
 @media only screen and (max-width:800px)     {
 
   .uploadicon {
@@ -58,12 +65,12 @@
     size: 18px;
      
   }
-}
+}  */
 
-@media only screen and (max-width:1024px)     {
+@media only screen and   (max-width:1024px)     {
 
   .uploadicon {
-     margin-top:90px;
+     margin-top:100px;
     margin-left:-8px;
    
   }
@@ -73,7 +80,19 @@
   }
 }
 
-@media only screen and (max-width:1440px)    {
+@media only screen and (min-width:1025px) and (max-width: 1366px)     {
+  .uploadicon {
+    margin-top: 80px;
+    margin-left:-8px;
+   
+  }
+  .uploadicon svg {
+    size: 18px;
+     
+  }
+}
+
+@media only screen  and  (min-width:1367px) and (max-width:1440px)    {
 
   .uploadicon {
      
@@ -85,24 +104,24 @@
 
 }
 
-@media only screen and (max-width:1680px)    {
+@media only screen and  (min-width:1441px) and (max-width:1680px)    {
 
   .uploadicon {
      
-     margin-top:170px;
+     margin-top:160px;
    margin-left:-8px;
   
  }
   
 
 }
-*/
+ 
 
-@media   screen and (max-width:1920px)  {
+@media   screen  and  (min-width:1681px) and (max-width:1920px)  {
 
   .uploadicon {
      
-     margin-top:120px;
+     margin-top:180px;
    margin-left:-8px;
   
  }
@@ -113,11 +132,11 @@
 
 }
  
-@media only screen and (max-width:2560px)  {
+@media only screen  and  (min-width:1921px) and (max-width:2560px)  {
 
   .uploadicon {
      
-     margin-top:120px;
+     margin-top:200px;
    margin-left:-8px;
   
  }

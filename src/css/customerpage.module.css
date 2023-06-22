@@ -1,12 +1,13 @@
 .main {
-  min-width: 350px;
+ width: 350px;
 
-  min-height: 705px;
-  max-height: 705px;
+ height: 705px;
+ 
 
   font-family: "Gill Sans", sans-serif;
 
   box-shadow: 0 0px 4px 0 #00000033, 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+overflow: hidden;
 }
 
 .header {
@@ -16,10 +17,10 @@
   padding-top: 8px;
   padding-bottom: 5px;
   box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  line-height: 0.4;
+  
 
   height: 80px;
-  position: relative;
+  
 }
 
 .header h4 {
@@ -32,7 +33,7 @@
 
 .tablealign {
   height: 415px;
-  max-height: 415px;
+  
   border-bottom: 1px solid green;
   overflow-y: scroll;
 }
@@ -84,7 +85,7 @@
 .pay {
   margin-top: 25px;
   margin-left: 20px;
-  margin-left: -100px;
+  
 }
 
 .pay h6 {
@@ -95,41 +96,170 @@
 }
 
 .pay img {
-  min-width: 140px;
-  min-height: 145px;
-  height: 145px;
-  max-height: 145px;
+   width: 140px;
+   height: 145px;
+  
+   
   border: 7px solid #6ba613;
   box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  line-height: 0.4;
+ 
 }
 
 .items {
   overflow-x: hidden;
 }
 
-@media only screen and (max-width: 1024px) {
+ 
+@media only screen   and (max-width: 800px) {
   .main {
-    width: 45%;
-    height: 40%;
+    width: 30%;
+   
+    height:auto;
+    
+   
+     font-family: "Gill Sans", sans-serif;
+   
+     box-shadow: 0 0px 4px 0 #00000033, 0 0px 10px 0 rgba(0, 0, 0, 0.19);
+   }
+   
+   .header {
+     color: white;
+     background-color: #6ba613;
+     padding-left: 10px;
+     padding-top: 8px;
+     padding-bottom: 5px;
+     box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     
+   
+     height: 60px;
+     
+   }
+   
+   .header h4 {
+     margin-top: 10px;
+     font-family: "Gill Sans", sans-serif;
+     font-weight: 530;
+     font-style: normal;
+     font-size:20px;
+   }
+   
+   .tablealign {
+     height: 300px;
+     
+     border-bottom: 1px solid green;
+     overflow-y: scroll;
+   }
+   
+   .tablealign ::-webkit-scrollbar {
+     display: none;
+   }
+   
+   .footer {
+     display: flex;
+   }
+   
+ 
+   
+   .amount {
+     margin-top: 30px;
+     margin-left: 10px;
+   }
+   
+   .amount h3 {
+     font-weight: bolder;
+     color: black;
+     font-size: 12px;
+     width: 120px;
+   }
+   
+   .amount h1 {
+     font-weight: bolder;
+     color: rgb(14, 59, 21);
+   }
+   
+   .footer {
+     display: flex;
+   }
+   
+   .pay {
+     margin-top: 25px;
+     margin-left: 10px;
+     
+   }
+   
+   .pay h6 {
+     width: 60px;
+     font-weight: bolder;
+     font-size: 12px;
+     color: black;
+   }
+   
+   .pay img {
+      width: 60px;
+      height:auto;
+     
+      
+     border: 7px solid #6ba613;
+     box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+   }
+   
+   .items {
+     overflow-x: hidden;
+   }
+}
+
+@media only screen   and (max-width: 1024px) {
+  .main {
+    width:30%;
+    height:auto;
+  }
+  .amount h3 {
+    margin-right: 10px;
+    font-size: 19px;
   }
 
+  .amount h1 {
+    font-weight: bolder;
+    color: rgb(14, 59, 21);
+  }
+
+  .tablealign {
+    height: 450px;
+    
+    border-bottom: 1px solid green;
+    overflow-y: scroll;
+  }
+
+  .tablealign ::-webkit-scrollbar {
+    display: none;
+  }
+
+
   .pay img {
-    width: 50%;
-    height: 50%;
+    width: 90px;
+    height:auto;
   }
 
   .pay {
-    margin-top: 25px;
-    width: 50%;
-    height: 50%;
+    margin-top: 30px;
+   
+  }
+  .pay h6 {
+    width: 90px;
+    font-weight: bolder;
+    font-size: 12px;
+    color: black;
+  }
+  .tablealign {
+    overflow-x: hidden;
   }
 }
 
-@media only screen and (max-width: 1366px) {
+@media only screen and (min-width:1025px)and (max-width: 1366px) {
   .main {
-    width: 45%;
-    height: 45%;
+    width: 30%;
+    height:auto;
   }
 
   .header h4 {
@@ -141,15 +271,14 @@
   }
 
   .pay img {
-    width: 100%;
-    height: 50%;
+    width:150px;
+    height:auto;
   }
 
   .pay {
-    margin-left: 20px;
-    margin-top: 25px;
-    width: 50%;
-    height: 50%;
+    margin-left: 40px;
+    margin-top: 30px;
+    
   }
 
   .amount h3 {
@@ -161,12 +290,15 @@
     font-weight: bolder;
     color: rgb(14, 59, 21);
   }
+  .items {
+    overflow-x: hidden;
+  } 
 }
 
-@media only screen and (min-width: 1440px)   {
+@media only screen and (min-width:1367px) and (max-width: 1440px)   {
   .main {
-    width: 35%;
-    min-height: 820px;
+    width: 30%;
+     height: auto;
   }
 
   .header {
@@ -192,7 +324,103 @@
 
   .tablealign {
     height: 490px;
-    max-height: 490px;
+    
+    border-bottom: 1px solid green;
+    overflow-y: scroll;
+  }
+
+  .tablealign ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .amount {
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+
+  .amount h3 {
+    font-weight: bolder;
+    color: black;
+    font-size: 25px;
+    width: 250px;
+  }
+
+  .amount h1 {
+    font-weight: bolder;
+    color: rgb(14, 59, 21);
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .pay {
+    margin-top: 40px;
+    margin-left: 10px;
+  }
+
+  .pay h6 {
+    width: 150px;
+    font-weight: bolder;
+    font-size: 20px;
+    color: black;
+  }
+
+  .pay img {
+     width: 150px;
+   height:auto;
+   
+    border: 7px solid #6ba613;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     
+  }
+
+  .items {
+    overflow-x: hidden;
+  } 
+  .items {
+    overflow-x: hidden;
+  } 
+  
+}  
+
+
+
+
+@media only screen and (min-width:1441px) and (max-width: 1680px)   {
+  .main {
+    width: 30%;
+   height:auto;
+  }
+/*
+  .header {
+    color: white;
+    background-color: #6ba613;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+
+    height: 80px;
+    position: relative;
+  }
+
+  .header h4 {
+    margin-top: 10px;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 530;
+    font-style: normal;
+    font-size: 40px;
+  }
+*/
+  .tablealign {
+    height: 600px;
+   
     border-bottom: 1px solid green;
     overflow-y: scroll;
   }
@@ -227,7 +455,7 @@
   }
 
   .pay {
-    margin-top: 25px;
+    margin-top: 40px;
     margin-left: 40px;
   }
 
@@ -239,28 +467,92 @@
   }
 
   .pay img {
-    min-width: 140px;
-    min-height: 145px;
-    height: 145px;
-    max-height: 145px;
+   width: 180px;
+    height: auto;
+    
+   
     border: 7px solid #6ba613;
     box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    line-height: 0.4;
+    
   }
 
   .items {
     overflow-x: hidden;
   }
-  
 }
 
-
-
-
-@media only screen and (min-width: 1680px)   {
+@media only screen and (min-width: 1681px)   and (max-width:1920px){
   .main {
-    width: 35%;
-    min-height: 980px;
+    width: 30%;
+    height:auto;
+  }
+
+  .tablealign {
+    height: 650px;
+   
+    border-bottom: 1px solid green;
+    overflow-y: scroll;
+  }
+  .tablealign ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .amount {
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+
+  .amount h3 {
+    font-weight: bolder;
+    color: black;
+    font-size: 28px;
+    width: 250px;
+  }
+
+  .amount h1 {
+    font-weight: bolder;
+    color: rgb(14, 59, 21);
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .pay {
+    margin-top:40px;
+    margin-left: 50px;
+  }
+
+  .pay h6 {
+    width: 200px;
+    font-weight: bolder;
+    font-size: 25px;
+    color: black;
+  }
+
+  .pay img {
+     width:240px;
+   height: auto;
+    
+     
+    border: 7px solid #6ba613;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+  }
+
+  .items {
+    overflow-x: hidden;
+  } 
+}
+
+@media only screen and (min-width: 1921px)   and (max-width: 2560px){
+  .main {
+    width: 30%;
+    height:auto;
   }
 
   .header {
@@ -270,14 +562,14 @@
     padding-top: 8px;
     padding-bottom: 5px;
     box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    line-height: 0.4;
+   
 
-    height: 80px;
-    position: relative;
+    height: 100px;
+    
   }
 
   .header h4 {
-    margin-top: 10px;
+    margin-top: 15px;
     font-family: "Gill Sans", sans-serif;
     font-weight: 530;
     font-style: normal;
@@ -285,8 +577,8 @@
   }
 
   .tablealign {
-    height: 600px;
-    max-height: 600px;
+    height: 900px;
+     
     border-bottom: 1px solid green;
     overflow-y: scroll;
   }
@@ -321,115 +613,25 @@
   }
 
   .pay {
-    margin-top: 25px;
-    margin-left: 100px;
+    margin-top:40px;
+    margin-left: 150px;
   }
 
   .pay h6 {
-    width: 150px;
+    width: 200px;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 25px;
     color: black;
   }
 
   .pay img {
-    min-width: 140px;
-    min-height: 145px;
-    height: 145px;
-    max-height: 145px;
+     width: 300px;
+   height: auto;
+    
+     
     border: 7px solid #6ba613;
     box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    line-height: 0.4;
-  }
-
-  .items {
-    overflow-x: hidden;
-  }
-}
-
-@media only screen and (min-width: 1920px)   and (max-width: 2540px){
-  .main {
-    width: 35%;
-    min-height: 990px;
-  }
-
-  .header {
-    color: white;
-    background-color: #6ba613;
-    padding-left: 10px;
-    padding-top: 8px;
-    padding-bottom: 5px;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    line-height: 0.4;
-
-    height: 80px;
-    position: relative;
-  }
-
-  .header h4 {
-    margin-top: 10px;
-    font-family: "Gill Sans", sans-serif;
-    font-weight: 530;
-    font-style: normal;
-    font-size: 40px;
-  }
-
-  .tablealign {
-    height: 600px;
-    max-height: 600px;
-    border-bottom: 1px solid green;
-    overflow-y: scroll;
-  }
-
-  .tablealign ::-webkit-scrollbar {
-    display: none;
-  }
-
-  .footer {
-    display: flex;
-  }
-
-  .amount {
-    margin-top: 50px;
-    margin-left: 10px;
-  }
-
-  .amount h3 {
-    font-weight: bolder;
-    color: black;
-    font-size: 28px;
-    width: 250px;
-  }
-
-  .amount h1 {
-    font-weight: bolder;
-    color: rgb(14, 59, 21);
-  }
-
-  .footer {
-    display: flex;
-  }
-
-  .pay {
-    margin-top: 25px;
-    margin-left: 100px;
-  }
-
-  .pay h6 {
-    width: 150px;
-    font-weight: bolder;
-    font-size: 20px;
-    color: black;
-  }
-
-  .pay img {
-    min-width: 140px;
-    min-height: 145px;
-    height: 145px;
-    max-height: 145px;
-    border: 7px solid #6ba613;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    line-height: 0.4;
+   
   }
 
   .items {

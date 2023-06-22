@@ -17,6 +17,10 @@ function LoginPage(props) {
   const submithandler = async (e) => {
     e.preventDefault();
 
+    const popinput = popref.current.value;
+
+    setTakepopinput(popinput);
+
     const useradd = usernameref.current.value;
     const passadd = passwordref.current.value;
     console.log(useradd, passadd);
@@ -28,39 +32,48 @@ function LoginPage(props) {
       .then((res) => {
         console.log("result::", res.data);
         props.getTokenHandler(res.data.token,takepopinput)
-        
-        alert(res.data.message);
-        if (res.data.message == "Success") {
+        if(res.data.message=="Success"){
           history.push("/CustomerPage");
+        }else{
+          alert(res.data.message);
         }
+        
+        
       })
       .catch((error) => {
         console.log(error, "from error");
       });
   };
 
-  const popsubmitHandler = (e) => {
-    e.preventDefault();
-    const popinput = popref.current.value;
+  // const popsubmitHandler = (e) => {
+  //   e.preventDefault();
+  //   const popinput = popref.current.value;
 
-    setTakepopinput(popinput);
-    setShowpop(false);
-    setshowLogin(true);
-  };
-  console.log(takepopinput, "form pop sumit handler");
+  //   setTakepopinput(popinput);
+  //   setShowpop(false);
+  //   setshowLogin(true);
+  // };
+  // console.log(takepopinput, "form pop sumit handler");
   
 
   return (
     <div>
-      {showloing && (
+          <div className={classes.loginmain }>
         <div className={classes.login}>
           <div>
             <div>
-              <h6>{`Foodies-World`}</h6>
+              <h2>{`Foodies-World`}</h2>
             </div>
             <div className={classes.formoutline}>
               <form onSubmit={submithandler}>
                 <div className={classes.form}>
+<div>
+                <input
+                      type="text"
+                      ref={popref}
+                      placeholder="Please enter your IP Address"
+                    ></input>
+                  </div>
                   <div>
                     <input
                       type="text"
@@ -83,10 +96,10 @@ function LoginPage(props) {
             </div>
           </div>
         </div>
-      )}
+      
       {/********************* */}
-      {showpop && (
-        <div>
+        
+        {/* <div>
           <div className={classes.top}>
             <div>
               <div>
@@ -108,22 +121,22 @@ function LoginPage(props) {
                       ref={popref}
                       placeholder="Please enter your IP Address"
                     ></input>
-                  </div>
-                  <div>
+                  
                     <button className="btn btn-dark btn-sm">Connect</button>
                   </div>
                 </form>
-              </div>
+              </div> 
             </div>
           </div>
          
         </div>
 
-        
-      )}
+        */}
+      
 
 
     </div>
+   </div>
   );
 }
 

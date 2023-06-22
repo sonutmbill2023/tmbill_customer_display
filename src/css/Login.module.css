@@ -1,10 +1,27 @@
-.login{
+
+.loginmain{
+
+    width:550px;
+height: 300px;
+border:2px solid rgb(219, 217, 217);
+border-radius:10px;
+display: flex;
+flex-direction:column;
+align-items: center;
+justify-content: center;
+ position:absolute;
+ top:50%;
+ left:50%;
+ transform: translate(-50%,-50%);
+
+}
+/* .login{
     display: flex;
     position:absolute;
     top:50%;
     left: 50%;
     transform: translate(-50%,-50%);
-}
+} */
 .formoutline{
     width:510px;
 }
@@ -29,7 +46,7 @@
 
 /* ************************popup */
 
-.top{
+/* .top{
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -38,26 +55,35 @@
      top:50%;
      left:50%;
      transform: translate(-50%,-50%);
-}
+} */
 .popup{
     border:2px solid rgb(219, 217, 217);
     display: flex;
    
     align-items: center;
-    width:400px;
-    height:90px;
+    justify-content: space-around;
+     
+   
     border-radius:10px;
     line-height:0.8;
-    
+     width:500px;
+    height:90px;
    
 }
 .popup p{
     padding-left:10px;
     margin-left:10px;
-    margin-top:8px;
+      margin-top:12px;
 }
 .popup button {
-    margin-left:187px;
+     margin-left:30px;  
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-left:-30px;
 }
 
 .input input{
@@ -65,12 +91,15 @@
      color: rgb(179, 176, 176);
      border-radius:6px;
      border:1px solid #dcd8d8e8;
-    margin-top: 5px;
-    margin-bottom:5px;
-    margin-left:5px;
+  
+     
+   
     background-color:#f4f4f4e8;
    
    width:100%;
    min-width:100px;
 
 }
+
+
+ 

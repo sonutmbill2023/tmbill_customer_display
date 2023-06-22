@@ -1,9 +1,9 @@
-.main {
+  .main {
   background-color: #f4fbed;
   width: 673px;
   height: 705px;
-  width: 100%;
-  height: 100%;
+  overflow: hidden;
+ 
 }
 
   .offer {
@@ -28,19 +28,20 @@
   max-height: 30px;
   width: 100%;
   height: 100%;
-}
+}  
 .img {
    
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:space-around;
 
   
 }
+ 
 .img img {
-  width: 195px;
-  height: 340px;
+     width: 195px;
+  height: 340px;    
   margin-top: 80px;
    
   margin-left: 15px;
@@ -49,7 +50,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
  
     
-}
+}  
 
 .img img:hover {
   margin-top: 50px;
@@ -97,162 +98,147 @@
 .imglabel {
   margin-top: -10px;
 }
-/*
-@media screen and (max-width: 800px) {
+ 
+ @media screen and (max-width: 800px) {
   .main {
-    width: 65%;
-    height: 90%;
-  }
-
-  .offer img {
-    max-width: 50%;
-    max-height: 50%;
-  }
-
-  .ico img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .img img {
-    min-width: 50%;
-    min-height: 50%;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .main {
-    width: 100%;
-    height: 100%;
-  }
-
-  .offer img {
-    width: 50%;
-    height: 50%;
-  }
-
-  .ico img {
-    width: 100%;
-    height: 100%;
-  }
-
-  .img img {
-    min-width: 195px;
-    height: 100%;
-  }
-}
-
-@media only screen and (max-width: 1360px) {
-  .main {
-    width: 80%;
-    height: 80%;
-  }
-
-  .offer img {
-    width: 50%;
-    height: 50%;
-  }
-
-  .ico img {
-    width: 80%;
-    height: 80%;
-  }
-  .img {
-    margin-left: 95px;
-  }
-  .img img {
-    min-width: 250px;
-    height: 100%;
-  }
-}
-
-  @media only screen and (max-width:1680px)  {
-  
-
-  .main {
-    width: 65%;
-    min-height: 980px;
-  }
-
-   .offer img {
     width: 70%;
-    height: 50%;
+    height:auto;
   }
 
-  .img{
-     
-     margin-left:200px;
-     
+
+  .offer img {
+    width:150px;
+    height:auto;
   }
+
+  .ico img {
+    width: 100%;
+    height: 100%;
+  }
+   
 
   .img img {
-    min-width:330px;
-     min-height:450px;
-   }  
+   max-width: 150px;
+    max-height:300px;
+     
+  }
 
+ 
 }  
 
-@media only screen and (max-width: 1440px) {
+  @media only screen    and (max-width: 1024px) {
   .main {
-    width: 65%;
-    min-height: 820px;
+    width:70%;
+    height:auto;
   }
 
   .offer img {
-    width: 60%;
-    height: 45%;
+    width:200px;
+    height:auto;
   }
 
+  .ico img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .img img {
+    width: 195px;
+    height:340px;
+  }
+}  
+
+@media  only screen and  (min-with:1025px)  and (max-width: 1366px) {
+  .main {
+    width: 70%;
+    height:auto;
+  }
+
+  .offer img {
+    width:300;
+    height:auto;
+  }
+
+  .ico img {
+    width: 80%;
+    height: 80%;
+  }
   .img {
-    margin-left: 120px;
+    margin-left:15px;
+margin-right:15px;
   }
   .img img {
-    min-width: 270px;
-    min-height: 371px;
+    width: 220px;
+    height:400px;
   }
 }
 
-@media only screen and (max-width: 1680px) {
+  
+
+@media  only screen and  (min-width:1367px)  and  (max-width: 1440px) {
   .main {
-    width: 65%;
+    width:70%;
+    min-height:auto;
+  }
+
+  .offer img {
+    width:300px;
+    height:auto;
+  }
+
+  .img {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .img img {
+     width: 250px;
+     height: 400px;
+  }
+}
+
+@media only screen and (min-width:1441px) and (max-width: 1680px) {
+  .main {
+    width: 70%;
     min-height: auto;
   }
 
   .offer img {
-    width: 70%;
-    height: 50%;
+    width:500px;
+    height:auto;
   }
 
   .img {
-    margin-left: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 
   .img img {
-    min-width: 330px;
-    min-height: 450px;
+   width: 300px;
+     height:500px;
   }
-}*/
+} 
 
-@media  only screen and (max-width: 1920px) {
+@media  only screen and (min-width:1681px) and (max-width: 1920px) {
   .main {
     width: 70%;
     height: auto;
   }
 
   .offer img {
-    width: 70%;
-    height: 50%;
+    width:500px;
+    height: auto;
   }
 
    
 
   .img img {
-     width: 370px;
-     height: 500px;
+      width: 340px;
+     height: 550px;
+     margin-top:80px;
   }
 } 
 
-@media only screen and (max-width: 2560px) {
+@media only screen and (min-width:1921px) and (max-width: 2560px) {
   .main {
     width: 70%;
     height:auto;
@@ -260,14 +246,15 @@
   }
 
   .offer img {
-    width: 600px;
+    width: 700px;
     height: auto;
     margin-left: 50px;
   }
  
   .img img {
-    width:400px;
-    margin-left:60px;
-    height:545px;
+    width:450px;
+    margin-left:20px;
+    margin-top: 150px;
+    height:800px;
   }
 }
