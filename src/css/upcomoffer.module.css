@@ -101,7 +101,7 @@
  
  @media screen and (max-width: 800px) {
   .main {
-    width: 70%;
+    width: 60%;
     height:auto;
   }
 
@@ -118,22 +118,22 @@
    
 
   .img img {
-   max-width: 150px;
-    max-height:300px;
+    width: 130px;
+     height:200px;
      
   }
 
  
 }  
 
-  @media only screen    and (max-width: 1024px) {
+  @media only screen  and (min-width:801px)  and (max-width: 1024px) {
   .main {
     width:70%;
     height:auto;
   }
 
   .offer img {
-    width:200px;
+    width:340px;
     height:auto;
   }
 
@@ -141,21 +141,24 @@
     width: 100%;
     height: 100%;
   }
-
+.img{
+  margin-left: 15px;
+  margin-right: 15px;
+}
   .img img {
-    width: 195px;
-    height:340px;
+    width: 210px;
+    height:330px;
   }
 }  
 
-@media  only screen and  (min-with:1025px)  and (max-width: 1366px) {
+@media  only screen and  (min-width:1025px)  and (max-width: 1366px) {
   .main {
-    width: 70%;
+    width:70%;
     height:auto;
   }
 
   .offer img {
-    width:300;
+    width:400px;
     height:auto;
   }
 
@@ -166,40 +169,22 @@
   .img {
     margin-left:15px;
 margin-right:15px;
+margin-top:-5px;
   }
   .img img {
-    width: 220px;
-    height:400px;
-  }
-}
+     width: 250px;
+    height:345px;   
 
-  
+   
+
+      }
+
+}  
 
 @media  only screen and  (min-width:1367px)  and  (max-width: 1440px) {
   .main {
     width:70%;
-    min-height:auto;
-  }
-
-  .offer img {
-    width:300px;
-    height:auto;
-  }
-
-  .img {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-  .img img {
-     width: 250px;
-     height: 400px;
-  }
-}
-
-@media only screen and (min-width:1441px) and (max-width: 1680px) {
-  .main {
-    width: 70%;
-    min-height: auto;
+ height:auto;
   }
 
   .offer img {
@@ -211,11 +196,32 @@ margin-right:15px;
     margin-left: 15px;
     margin-right: 15px;
   }
-
   .img img {
-   width: 300px;
-     height:500px;
+     width:290px;
+     height: 390px;
   }
+}
+
+@media only screen and (min-width:1441px) and (max-width: 1680px) {
+  .main {
+    width: 70%;
+    min-height: auto;
+  }
+
+  .offer img {
+    width:600px;
+    height:auto;
+  }
+
+  .img {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .img img {
+     width:350px;
+     height:450px;
+  }
+  
 } 
 
 @media  only screen and (min-width:1681px) and (max-width: 1920px) {
@@ -232,8 +238,8 @@ margin-right:15px;
    
 
   .img img {
-      width: 340px;
-     height: 550px;
+      width: 390px;
+     height: 500px;
      margin-top:80px;
   }
 } 
@@ -246,15 +252,19 @@ margin-right:15px;
   }
 
   .offer img {
-    width: 700px;
+    width: 800px;
     height: auto;
-    margin-left: 50px;
+    
   }
- 
+ .img{
+  margin-left: 15px;
+  margin-right: 15px;
+
+  margin-top: 150px;
+ }
   .img img {
-    width:450px;
-    margin-left:20px;
-    margin-top: 150px;
-    height:800px;
+    width:500px;
+   
+    height:650px;
   }
 }

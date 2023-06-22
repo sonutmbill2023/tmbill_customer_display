@@ -4,14 +4,14 @@ import classes from "../css/customerpage.module.css";
 import Qrimg from "../asset/qr_pay.jpg";
 import UpcomingOffer from "./UpcomingOffer";
 import { useEffect, useState } from "react";
-import QRCode from  'qrcode'
+import QRCode from "qrcode";
 import { io } from "socket.io-client";
 import axios from "axios";
 
 function CustomerPage(props) {
   const [tableData, setTableData] = useState([]);
 
-  const [qrsrc,setQrSrc] = useState('');
+  const [qrsrc, setQrSrc] = useState("");
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
 
   useEffect(() => {
@@ -36,9 +36,6 @@ function CustomerPage(props) {
             }
           )
           .then((res) => {
-            
-            
-              
             setTableData(res.data.orderdata);
           });
       } catch (err) {
@@ -47,22 +44,16 @@ function CustomerPage(props) {
     });
   }, []);
 
-  
-/************************** */
-useEffect(()=>{
-QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}` 
- 
-).then((res)=>{ 
-  setQrSrc(res)
-  
-  
-})
-.catch((err)=>{
-  console.log(err)
-})
-},[tableData])
-
- 
+  /************************** */
+  useEffect(() => {
+    QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`)
+      .then((res) => {
+        setQrSrc(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [tableData]);
 
   return (
     <div style={{ display: "flex" }}>
@@ -73,17 +64,17 @@ QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`
           {/* <h4>ORDER ID:{tableData.bill_number}</h4> */}
         </div>
 
-        <div  className={classes.tablealign}>
-        <div  className={classes.table}>
-             <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>Item Name</th>
-                <th>QTY</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            {tableData?.billItems?.map((item) => (
+        <div className={classes.tablealign}>
+          <div className={classes.table}>
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>QTY</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              {tableData?.billItems?.map((item) => (
               <tbody key={item.item_id}>
                 <tr>
                   <td>{item.title}</td>
@@ -91,17 +82,180 @@ QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`
                   <td>{item.amount}</td>
                 </tr>
               </tbody>
-            ))}  
+            ))}    
+              {/* <tbody>
 
-
-           
-     
-  
- 
-   
-          </table>     
-         
-</div>
+              <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr> <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+              </tbody> */}
+            </table>
+          </div>
         </div>
         <div className={classes.footer}>
           <div className={classes.amount}>
@@ -110,8 +264,8 @@ QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`
           </div>
           <div className={classes.pay}>
             <h6>SCAN TO PAY</h6>
-            {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}     
-             
+             {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}     
+            {/* <img src={Qrimg} alt="qr" /> */}
           </div>
         </div>
       </div>

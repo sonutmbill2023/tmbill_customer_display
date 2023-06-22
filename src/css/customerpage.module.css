@@ -7,7 +7,7 @@
   font-family: "Gill Sans", sans-serif;
 
   box-shadow: 0 0px 4px 0 #00000033, 0 0px 10px 0 rgba(0, 0, 0, 0.19);
-overflow: hidden;
+
 }
 
 .header {
@@ -112,7 +112,7 @@ overflow: hidden;
  
 @media only screen   and (max-width: 800px) {
   .main {
-    width: 30%;
+    width: 40%;
    
     height:auto;
     
@@ -144,7 +144,7 @@ overflow: hidden;
    }
    
    .tablealign {
-     height: 300px;
+     height: 310px;
      
      border-bottom: 1px solid green;
      overflow-y: scroll;
@@ -161,7 +161,7 @@ overflow: hidden;
  
    
    .amount {
-     margin-top: 30px;
+     margin-top: 20px;
      margin-left: 10px;
    }
    
@@ -169,7 +169,7 @@ overflow: hidden;
      font-weight: bolder;
      color: black;
      font-size: 12px;
-     width: 120px;
+     width: 110px;
    }
    
    .amount h1 {
@@ -182,34 +182,31 @@ overflow: hidden;
    }
    
    .pay {
-     margin-top: 25px;
+     margin-top: 20px;
      margin-left: 10px;
      
    }
    
    .pay h6 {
-     width: 60px;
+     width: 80px;
      font-weight: bolder;
      font-size: 12px;
      color: black;
    }
    
    .pay img {
-      width: 60px;
+      width: 120px;
       height:auto;
      
       
-     border: 7px solid #6ba613;
-     box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
-   }
+   }  
    
    .items {
      overflow-x: hidden;
    }
 }
 
-@media only screen   and (max-width: 1024px) {
+@media only screen and (min-width:801px)  and (max-width: 1024px) {
   .main {
     width:30%;
     height:auto;
@@ -225,7 +222,7 @@ overflow: hidden;
   }
 
   .tablealign {
-    height: 450px;
+    height:415px;
     
     border-bottom: 1px solid green;
     overflow-y: scroll;
@@ -235,70 +232,65 @@ overflow: hidden;
     display: none;
   }
 
+ 
 
-  .pay img {
-    width: 90px;
-    height:auto;
+
+  
+  .footer {
+    display: flex;
   }
 
-  .pay {
+  .amount {
     margin-top: 30px;
-   
-  }
-  .pay h6 {
-    width: 90px;
-    font-weight: bolder;
-    font-size: 12px;
-    color: black;
-  }
-  .tablealign {
-    overflow-x: hidden;
-  }
-}
-
-@media only screen and (min-width:1025px)and (max-width: 1366px) {
-  .main {
-    width: 30%;
-    height:auto;
-  }
-
-  .header h4 {
-    margin-top: 18px;
-    font-family: "Gill Sans", sans-serif;
-    font-weight: 530;
-    font-style: normal;
-    font-size: 34px;
-  }
-
-  .pay img {
-    width:150px;
-    height:auto;
-  }
-
-  .pay {
-    margin-left: 40px;
-    margin-top: 30px;
-    
+    margin-left: 10px;
   }
 
   .amount h3 {
-    margin-right: 10px;
-    font-size: 19px;
+    font-weight: bolder;
+    color: black;
+    font-size: 14px;
+    width: 120px;
   }
 
   .amount h1 {
     font-weight: bolder;
     color: rgb(14, 59, 21);
+    
   }
+
+  .footer {
+    display: flex;
+  }
+
+  .pay {
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+
+  .pay h6 {
+    width: 150px;
+    font-weight: bolder;
+    font-size: 13px;
+    color: black;
+  }
+ 
+  .pay img {
+     width: 150px;
+   height:auto;
+   
+   
+     
+  }
+
   .items {
     overflow-x: hidden;
   } 
 }
 
-@media only screen and (min-width:1367px) and (max-width: 1440px)   {
+@media only screen and (min-width:1025px)and (max-width: 1366px) {
   .main {
     width: 30%;
-     height: auto;
+     height:auto;
   }
 
   .header {
@@ -323,7 +315,98 @@ overflow: hidden;
   }
 
   .tablealign {
-    height: 490px;
+    height: 390px;
+    
+    border-bottom: 1px solid green;
+    overflow-y: scroll;
+  }
+
+  .tablealign ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .amount {
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+
+  .amount h3 {
+    font-weight: bolder;
+    color: black;
+    font-size: 20px;
+    width: 190px;
+  }
+
+  .amount h1 {
+    font-weight: bolder;
+    color: rgb(14, 59, 21);
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .pay {
+    margin-top: 30px;
+    margin-left: 10px;
+  }
+
+  .pay h6 {
+    width: 150px;
+    font-weight: bolder;
+    font-size: 18px;
+    color: black;
+  }
+.pay {
+  margin-left:15px;
+  margin-right:15px;
+}
+  .pay img {
+     width: 160px;
+   height:auto;
+   
+   
+     
+  }
+
+  .items {
+    overflow-x: hidden;
+  } 
+}
+
+@media only screen and (min-width:1367px) and (max-width: 1440px)   {
+  .main {
+    width: 30%;
+      height:auto;
+  }
+
+  .header {
+    color: white;
+    background-color: #6ba613;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    line-height: 0.4;
+
+    height: 80px;
+    position: relative;
+  }
+
+  .header h4 {
+    margin-top: 10px;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 530;
+    font-style: normal;
+    font-size: 40px;
+  }
+
+  .tablealign {
+    height: 420px;
     
     border-bottom: 1px solid green;
     overflow-y: scroll;
@@ -345,8 +428,8 @@ overflow: hidden;
   .amount h3 {
     font-weight: bolder;
     color: black;
-    font-size: 25px;
-    width: 250px;
+    font-size: 20px;
+    width: 170px;
   }
 
   .amount h1 {
@@ -360,31 +443,28 @@ overflow: hidden;
 
   .pay {
     margin-top: 40px;
-    margin-left: 10px;
+    margin-left: 25px;
   }
 
   .pay h6 {
     width: 150px;
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 18px;
     color: black;
   }
 
   .pay img {
-     width: 150px;
+     width: 200px;
    height:auto;
    
-    border: 7px solid #6ba613;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
      
   }
 
   .items {
     overflow-x: hidden;
   } 
-  .items {
-    overflow-x: hidden;
-  } 
+   
   
 }  
 
@@ -441,8 +521,8 @@ overflow: hidden;
   .amount h3 {
     font-weight: bolder;
     color: black;
-    font-size: 28px;
-    width: 250px;
+    font-size: 22px;
+    width: 200px;
   }
 
   .amount h1 {
@@ -456,7 +536,7 @@ overflow: hidden;
 
   .pay {
     margin-top: 40px;
-    margin-left: 40px;
+    margin-left: 20px;
   }
 
   .pay h6 {
@@ -467,7 +547,7 @@ overflow: hidden;
   }
 
   .pay img {
-   width: 180px;
+   width: 220px;
     height: auto;
     
    
@@ -488,7 +568,7 @@ overflow: hidden;
   }
 
   .tablealign {
-    height: 650px;
+    height: 530px;
    
     border-bottom: 1px solid green;
     overflow-y: scroll;
@@ -509,8 +589,8 @@ overflow: hidden;
   .amount h3 {
     font-weight: bolder;
     color: black;
-    font-size: 28px;
-    width: 250px;
+    font-size: 24px;
+    width: 210px;
   }
 
   .amount h1 {
@@ -524,7 +604,7 @@ overflow: hidden;
 
   .pay {
     margin-top:40px;
-    margin-left: 50px;
+    margin-left: 30px;
   }
 
   .pay h6 {
@@ -535,12 +615,10 @@ overflow: hidden;
   }
 
   .pay img {
-     width:240px;
+     width:320px;
    height: auto;
     
      
-    border: 7px solid #6ba613;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    
   }
 
@@ -577,7 +655,7 @@ overflow: hidden;
   }
 
   .tablealign {
-    height: 900px;
+    height: 800px;
      
     border-bottom: 1px solid green;
     overflow-y: scroll;
@@ -592,7 +670,7 @@ overflow: hidden;
   }
 
   .amount {
-    margin-top: 50px;
+    margin-top: 60px;
     margin-left: 10px;
   }
 
@@ -600,7 +678,7 @@ overflow: hidden;
     font-weight: bolder;
     color: black;
     font-size: 28px;
-    width: 250px;
+    width: 240px;
   }
 
   .amount h1 {
@@ -613,8 +691,8 @@ overflow: hidden;
   }
 
   .pay {
-    margin-top:40px;
-    margin-left: 150px;
+    margin-top:50px;
+    margin-left: 50px;
   }
 
   .pay h6 {
@@ -625,13 +703,11 @@ overflow: hidden;
   }
 
   .pay img {
-     width: 300px;
+     width: 350px;
    height: auto;
     
      
-    border: 7px solid #6ba613;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-   
+    
   }
 
   .items {
