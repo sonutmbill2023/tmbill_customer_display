@@ -52,7 +52,7 @@
  
 
  
-  
+  /*
  
 @media only screen and (max-width:800px)     {
 
@@ -145,4 +145,42 @@
  }
 
 }
+*/
+
+
+
+ 
+/* @media only screen  and   (max-width:1366px)  {
+
+  .uploadicon {
+      position: absolute;
+     
+     top:72vh;
+     margin-left:0.5vw;
+  
+ }
+ .uploadicon svg {
+   size:8vh;
+    
+ }
+
+}   */
+
+@media only screen    and   (max-width:7680px)  {
+
+  .uploadicon {
+
+    position: absolute;
+       /* margin-top: 27%; */
+       top:-80px;
+     margin-left:0.3vw;
+  
+ }
+ .uploadicon svg {
+   size:8vh;
+    
+ }
+
+}
+ 
  

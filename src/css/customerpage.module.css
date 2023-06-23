@@ -108,7 +108,7 @@
 .items {
   overflow-x: hidden;
 }
-
+/*
  
 @media only screen   and (max-width: 800px) {
   .main {
@@ -469,35 +469,13 @@
 }  
 
 
-
-
+ 
 @media only screen and (min-width:1441px) and (max-width: 1680px)   {
   .main {
     width: 30%;
    height:auto;
   }
-/*
-  .header {
-    color: white;
-    background-color: #6ba613;
-    padding-left: 10px;
-    padding-top: 8px;
-    padding-bottom: 5px;
-    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
-
-    height: 80px;
-    position: relative;
-  }
-
-  .header h4 {
-    margin-top: 10px;
-    font-family: "Gill Sans", sans-serif;
-    font-weight: 530;
-    font-style: normal;
-    font-size: 40px;
-  }
-*/
+ 
   .tablealign {
     height: 600px;
    
@@ -715,30 +693,95 @@
   }
 }
 
-/* @media   (max-width: 2560px) {
-    .main {
-      width: 30%;
-      height: 100%;
-       height:1400px;
-    } */
+*/
 
-/* .pay img {
-      width: 70%;
-      height: 50%;
-    }
-    .pay {
-      margin-left: 110px;
-      margin-top: 25px;
-      width: 50%;
-      height: 50%;
-    }
-  
-    .amount h3 {
-      margin-right: 10px;
-      font-size: 19px;
-    }
-    .amount h1 {
-      font-weight: bolder;
-      color: rgb(14, 59, 21);
-    }
-  } */
+@media only screen   and (max-width:7680px){
+  .main {
+    width: 30%;
+    height:100vh;
+  }
+
+  .header {
+    color: white;
+    background-color: #6ba613;
+    padding-left: 1vw;
+    padding-top: 0.5vh;
+    padding-bottom: 1vh;
+    box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+
+    height:7vh;
+    
+  }
+
+  .header h4 {
+    margin-top: 1vh;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 530;
+    font-style: normal;
+    font-size:4vh;
+  }
+
+  .tablealign {
+    height:60vh;
+     
+    border-bottom: 1px solid green;
+    overflow-y: scroll;
+  }
+
+  .tablealign ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .amount {
+    margin-top:4vh;
+    margin-left:1vw;
+  }
+
+  .amount h3 {
+    font-weight: bolder;
+    color: black;
+    font-size:1vw;
+    width:9vw;
+  }
+
+  .amount h1 {
+    font-weight: bolder;
+    color: rgb(14, 59, 21);
+    font-size:2vw;
+  }
+
+  .footer {
+    display: flex;
+  }
+
+  .pay {
+    margin-top:4vh;
+    margin-left:2vw;
+  }
+
+  .pay h6 {
+    width:20vw;
+    font-weight: bolder;
+    font-size: 1.3vw;
+    color: black;
+  }
+
+  .pay img {
+     width:15vw;
+   height:12vw;
+    
+     
+    
+  }
+
+  .items {
+    overflow-x: hidden;
+  }
+}
+
+ 

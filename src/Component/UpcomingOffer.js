@@ -97,6 +97,9 @@ const logout = () => {
   console.log(localStorage.getItem("image1"), "form offer page ");
 
   return (
+    <div>
+
+   
     <div className={classes.main}>
       <div className={classes.offer}>
         <img src={UpcomeOffer} alt="offer" />
@@ -191,7 +194,10 @@ const logout = () => {
 
       {/* *************** */}
 
-      <div className="uploadicon">
+     
+    
+
+    <div className="uploadicon">
         <button
           className="btn btn-default btn-sm"
           onClick={() => setUploadFile(!uploadfile)}
@@ -205,6 +211,7 @@ const logout = () => {
         >
           <LogoutIcon />
         </button>
+      </div>
       </div>
     </div>
   );
