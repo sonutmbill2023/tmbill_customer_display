@@ -81,6 +81,19 @@ function UpcomingOffer() {
     }
   }, []);
 
+
+/*logout confirmation */
+const logout = () => {
+  const confirm = window.confirm("are you sure?");
+  if(confirm){
+      history.push("/Loginpage" ) ;
+  }else {
+      // same as clicking a link 
+      // not optimal solution though
+      window.location.href = window.location.href;
+  }
+}
+
   console.log(localStorage.getItem("image1"), "form offer page ");
 
   return (
@@ -188,7 +201,7 @@ function UpcomingOffer() {
 
         <button
           className="btn btn-default btn-sm"
-          onClick={() => history.push("/Loginpage")}
+          onClick={() =>  logout()} 
         >
           <LogoutIcon />
         </button>

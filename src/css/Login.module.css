@@ -27,7 +27,8 @@ justify-content: center;
 }
 .form input {
      padding:8px;
-     color: rgb(179, 176, 176);
+     /* color: rgb(179, 176, 176); */
+      color: black;
      border-radius:6px;
      border:1px solid #dcd8d8e8;
     margin-top: 5px;
@@ -88,7 +89,8 @@ justify-content: center;
 
 .input input{
     padding:5px;
-     color: rgb(179, 176, 176);
+     /* color: rgb(179, 176, 176); */
+     color: black;
      border-radius:6px;
      border:1px solid #dcd8d8e8;
   
