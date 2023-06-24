@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "../css/customerpage.module.css";
 
-import Qrimg from "../asset/qr_pay.jpg";
+import Qrimg from "../asset/qr_pay.png";
 import UpcomingOffer from "./UpcomingOffer";
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
@@ -74,7 +74,7 @@ function CustomerPage(props) {
                   <th>Amount</th>
                 </tr>
               </thead>
-             {tableData?.billItems?.map((item) => (
+               {tableData?.billItems?.map((item) => (
               <tbody key={item.item_id}>
                 <tr>
                   <td>{item.title}</td>
@@ -82,7 +82,7 @@ function CustomerPage(props) {
                   <td>{item.amount}</td>
                 </tr>
               </tbody>
-            ))}      
+            ))}        
               {/* <tbody>
 
               <tr>
@@ -253,7 +253,7 @@ function CustomerPage(props) {
     <td>Francisco Chang</td>
     <td>Mexico</td>
   </tr>
-              </tbody>   */}
+              </tbody>    */}
             </table>
           </div>
         </div>
@@ -265,8 +265,8 @@ function CustomerPage(props) {
           </div>
           <div className={classes.pay}>
             <h6>SCAN TO PAY</h6>
-              {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}     
-              {/* <img src={Qrimg} alt="qr" />  */}
+            {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}      
+                {/*  <img src={Qrimg} alt="qr" />   */}
           </div>
         </div>
       </div>
