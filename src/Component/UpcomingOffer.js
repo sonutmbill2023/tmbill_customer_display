@@ -10,13 +10,24 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+
+ import sound from '../asset/confirmationsound.wav'
 function UpcomingOffer() {
+
+  // const [play] = useSound(boopSfx);
+ 
+
   const history = useHistory();
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
 
   const [image3, setImage3] = useState("");
   const [uploadfile, setUploadFile] = useState(false);
+  const [logoutBUtton,setLogOutButton] = useState(false);
   const imageHandler1 = (e) => {
     const file = e.target.files[0];
     localStorage.setItem("file1", file.name);
@@ -84,17 +95,37 @@ function UpcomingOffer() {
 
 /*logout confirmation */
 const logout = () => {
-  const confirm = window.confirm("are you sure?");
-  if(confirm){
-      history.push("/Loginpage" ) ;
-  }else {
-      // same as clicking a link 
-      // not optimal solution though
-      window.location.href = window.location.href;
+  
+new Audio(sound).play()
+  confirmAlert({
+      // title:'Do you really want to exit?',
+     message: 'Do you really want to exit?',
+    buttons: [
+      {
+        label: 'Yes',
+        onClick: () => {
+          history.push("/Loginpage" )
+        }
+      },
+      {
+        label: 'No',
+        onClick: () => {return  }  
+      }
+    ]
   }
+  );
+
+ 
+
+
 }
 
-  console.log(localStorage.getItem("image1"), "form offer page ");
+  
+
+const SettingHandler = ()=>{
+   
+   setLogOutButton(!logoutBUtton)
+}
 
   return (
     <div>
@@ -148,7 +179,7 @@ const logout = () => {
                 Note :{" "}
                 <small>
                   You can upload an Image In JPEG, PNG ,GIF format and Fixed
-                  Aspect Ratio is 200 X 373.
+                  Aspect Ratio is 300 X 450.
                 </small>
               </p>
             </div>
@@ -202,17 +233,20 @@ const logout = () => {
     <div className="uploadicon">
         <button
           className="btn btn-default btn-sm"
-          onClick={() => setUploadFile(!uploadfile)}
+          onClick={() =>  SettingHandler()}
         >
           <SettingsIcon />
         </button>
+        { logoutBUtton && (
+ <button  className="btn btn-default btn-sm"  onClick={()=>setUploadFile(!uploadfile)} ><CloudUploadIcon/></button>)}
 
-        <button
+
+        { logoutBUtton && (<button
           className="btn btn-default btn-sm"
           onClick={() =>  logout()} 
         >
           <LogoutIcon />
-        </button>
+        </button>)}
       </div>
       </div>
     </div>

@@ -3,21 +3,44 @@ import { useHistory } from "react-router-dom";
 import classes from "../css/Login.module.css";
 import axios from "axios";
 import { error } from "jquery";
+
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 function LoginPage(props) {
   const history = useHistory();
 
-  const [showpop, setShowpop] = useState(true);
-  const [showloing, setshowLogin] = useState(false);
+  const [userName,setUserName] = useState('');
+  const [Password,setPassword] = useState('');
+  const [ipAdd, setIpAdd] =useState('')
   const [takepopinput, setTakepopinput] = useState("");
   const [data, setData] = useState([]);
   const usernameref = useRef();
   const passwordref = useRef();
   const popref = useRef();
 
+
+const userNameHandler = (e)=>{
+setUserName(e.target.value)
+}
+ 
+const  PasswordHandler = (e)=>{
+ setPassword(e.target.value)
+  }
+  const  ipAddHandler = (e)=>{
+     setIpAdd(e.target.value)
+    }
+console.log(userName,Password,ipAdd)
+
+// useEffect(()=>{
+//   usernameref.current.focus()
+//   passwordref.current.focus()
+//   popref.current.focus()
+// },[])
+
   const submithandler = async (e) => {
     e.preventDefault();
 
-    const popinput = popref.current.value;
+     const popinput = popref.current.value;
 
     setTakepopinput(popinput);
 
@@ -25,35 +48,31 @@ function LoginPage(props) {
     const passadd = passwordref.current.value;
     console.log(useradd, passadd);
     await axios
-      .post(`http://${takepopinput}:3000/login`, {
-        username: useradd,
-        password: passadd,
+      .post(`http://${ipAdd}:3000/login`, {
+        username:  userName,
+        password: Password,
       })
       .then((res) => {
         console.log("result::", res.data);
-        props.getTokenHandler(res.data.token,takepopinput)
+        props.getTokenHandler(res.data.token,ipAdd)
+        
         if(res.data.message=="Success"){
-          history.push("/CustomerPage");
-        }else{
-          alert(res.data.message);
+             history.push("/CustomerPage");
         }
+        toast(res.data.message)
         
         
       })
       .catch((error) => {
         console.log(error, "from error");
+        if(error){
+          toast('Please Check your IP Address...')
+        }
+        
       });
   };
 
-  // const popsubmitHandler = (e) => {
-  //   e.preventDefault();
-  //   const popinput = popref.current.value;
-
-  //   setTakepopinput(popinput);
-  //   setShowpop(false);
-  //   setshowLogin(true);
-  // };
-  // console.log(takepopinput, "form pop sumit handler");
+ 
   
 
   return (
@@ -72,20 +91,26 @@ function LoginPage(props) {
                       type="text"
                       ref={popref}
                       placeholder="Please enter your IP Address"
+                      onChange={ipAddHandler}
+                      value={ipAdd}
                     ></input>
                   </div>
                   <div>
                     <input
                       type="text"
-                      ref={usernameref}
+                       ref={usernameref}
                       placeholder="Username"
+                      onChange={userNameHandler}
+                      value={userName}
                     />
                   </div>
                   <div>
                     <input
                       type="password"
-                      ref={passwordref}
+                        ref={passwordref}
                       placeholder="Password"
+                      onChange={PasswordHandler}
+                      value={Password}
                     />
                   </div>
                   <div>
@@ -99,43 +124,13 @@ function LoginPage(props) {
       
       {/********************* */}
         
-        {/* <div>
-          <div className={classes.top}>
-            <div>
-              <div>
-                <h6>Altantic POS found...</h6>
-              </div>
-              <div className={classes.popup}>
-                <div>
-                  <p>{`Foodies-World`}</p>
-                  <p>
-                    {data.map((item) => (
-                      <span key={item.ip}>{item.ip}</span>
-                    ))}{" "}
-                  </p>
-                </div>
-                <form onSubmit={popsubmitHandler}>
-                  <div className={classes.input}>
-                    <input
-                      type="text"
-                      ref={popref}
-                      placeholder="Please enter your IP Address"
-                    ></input>
-                  
-                    <button className="btn btn-dark btn-sm">Connect</button>
-                  </div>
-                </form>
-              </div> 
-            </div>
-          </div>
-         
-        </div>
-
-        */}
+       
       
 
 
     </div>
+
+    <ToastContainer />
    </div>
   );
 }

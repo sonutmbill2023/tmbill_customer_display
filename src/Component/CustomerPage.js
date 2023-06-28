@@ -7,13 +7,12 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import { io } from "socket.io-client";
 import axios from "axios";
-
 function CustomerPage(props) {
   const [tableData, setTableData] = useState([]);
 
   const [qrsrc, setQrSrc] = useState("");
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
-
+console.log(props.ipadd,'from customer display')
   useEffect(() => {
     socket.on("kot-saved", (data) => {
       const newdata = JSON.parse(data);
@@ -37,6 +36,7 @@ function CustomerPage(props) {
           )
           .then((res) => {
             setTableData(res.data.orderdata);
+            console.log(res.data,'from table-clicked')
           });
       } catch (err) {
         console.log("err:", err);
@@ -60,7 +60,7 @@ function CustomerPage(props) {
       <UpcomingOffer />
       <div className={classes.main}>
         <div className={classes.header}>
-          <h4>BILL NUMBER: {tableData.order_id}</h4>
+          <h4>BILL NUMBER: {tableData.order_id >0 ? tableData.order_id :null}</h4>
           {/* <h4>ORDER ID:{tableData.bill_number}</h4> */}
         </div>
 
@@ -69,23 +69,23 @@ function CustomerPage(props) {
             <table className="table table-bordered">
               <thead>
                 <tr>
-                  <th>Item Name</th>
-                  <th>QTY</th>
-                  <th>Amount</th>
+                  <th  style={{fontSize:'1.3vw',color:' #b4b0b0',textAlign:'center'}}>Item Name</th>
+                  <th  style={{fontSize:'1.3vw',color:'#b4b0b0',textAlign:'center'}}>Qty</th>
+                  <th   style={{fontSize:'1.3vw',color:'#b4b0b0',textAlign:'center'}}>Amount</th>
                 </tr>
               </thead>
-               {tableData?.billItems?.map((item) => (
+                {tableData?.billItems?.map((item) => (
               <tbody key={item.item_id}>
-                <tr>
+                <tr   style={{fontSize:'1.2vw',color:'#333333 '}}>
                   <td>{item.title}</td>
-                  <td>{item.quantity}</td>
+                  <td  >{item.quantity}</td>
                   <td>{item.amount}</td>
                 </tr>
               </tbody>
-            ))}        
-              {/* <tbody>
+            ))}          
+               {/* <tbody>
 
-              <tr>
+              <tr style={{fontSize:'1.3vw'}}>
     <td>Alfreds Futterkiste</td>
     <td>Maria Anders</td>
     <td>Germany</td>
@@ -253,7 +253,7 @@ function CustomerPage(props) {
     <td>Francisco Chang</td>
     <td>Mexico</td>
   </tr>
-              </tbody>    */}
+              </tbody>       */}
             </table>
           </div>
         </div>
@@ -265,8 +265,8 @@ function CustomerPage(props) {
           </div>
           <div className={classes.pay}>
             <h6>SCAN TO PAY</h6>
-            {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}      
-                {/*  <img src={Qrimg} alt="qr" />   */}
+              {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}        
+                 {/* <img src={Qrimg} alt="qr" />    */}
           </div>
         </div>
       </div>
