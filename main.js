@@ -1,5 +1,5 @@
 const { app, BrowserWindow, Menu, nativeImage, dialog } = require("electron");
-const { type } = require("os");
+ 
 const path = require("path");
 const menuItems = [
   {
@@ -33,13 +33,9 @@ const menuItems = [
 const menu = Menu.buildFromTemplate(menuItems);
 Menu.setApplicationMenu(menu);
 
-/******* */
  
-/******************** */
 
 let win;
-
-
 
 function createWindow() {
   win = new BrowserWindow({
@@ -49,20 +45,15 @@ function createWindow() {
     icon: __dirname + "/icon.ico",
     webPreferences: {
       nodeIntegration: true,
-       contextIsolation: true,
+      contextIsolation: true,
       // preload: path.join(__dirname, "renderer.js"),
     },
   });
   win.loadFile("index.html");
   win.setOverlayIcon(nativeImage.createFromPath("icon.ico"));
 
- 
-  win.on('closed', () => {
-    win = null;
-  });
-  return win
-     
- 
+
+   
 }
 
 require("electron-reload")(__dirname, {
@@ -70,28 +61,34 @@ require("electron-reload")(__dirname, {
 });
 
 app.whenReady().then(() => {
- win =  createWindow();
+  createWindow();
 });
 
  
 
-// app.on('ready', () => {
-//   win = createWindow();
-// });
+app.on("exit", (event) => {
+  //  event.preventDefault()
+  const choice = dialog.showMessageBoxSync(win, {
+    type: "question",
+    buttons: ["Yes", "No"],
+    defaultId: 1,
+    message: "Are you sure you want to quit?",
+  });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+  if (choice === 0) {
+    
     app.quit();
   }
 });
 
-app.on('activate', () => {
-  if (win === null) {
-    win = createWindow();
-  }
-});
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
 
- 
-
-
- 
+// app.on('activate', () => {
+//   if (win === null) {
+//     win = createWindow();
+//   }
+// });
