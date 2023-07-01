@@ -1,40 +1,37 @@
- 
- 
 .uploadimage {
   display: flex;
   align-items: center;
 }
 
-.uploadimage  section{
-    padding: 8px;
-    margin-top: 5px;
-    font-weight:bolder;
+.uploadimage section {
+  padding: 8px;
+  margin-top: 5px;
+  font-weight: bolder;
 }
 .uploadimage input {
   display: none;
 }
 
-.uploadimage label{
-  background-color:lightgrey;
- border:1px solid  grey;
- border-top-left-radius:4px;
- border-bottom-left-radius:4px;
-  padding:3px;
-  font-size:16px;
+.uploadimage label {
+  background-color: lightgrey;
+  border: 1px solid grey;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 3px;
+  font-size: 16px;
   margin-left: 20px;
   margin-right: 0px;
 }
-.uploadimage  span {
-     
-    width:230px;
-    margin-right:10px;
-    background-color: #6ba613;
-    color: white;
-    font-size:16px;
-    border-top-right-radius:4px;
-    border-bottom-right-radius:4px ;
-    padding: 4px;
-    overflow:hidden;
+.uploadimage span {
+  width: 230px;
+  margin-right: 10px;
+  background-color: #6ba613;
+  color: white;
+  font-size: 16px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 4px;
+  overflow: hidden;
 }
 
 /* .uploadicon {
@@ -51,8 +48,7 @@
 }
   */
 
- 
-  /*
+/*
  
 @media only screen and (max-width:800px)     {
 
@@ -147,9 +143,6 @@
 }
 */
 
-
-
- 
 /* @media only screen  and   (max-width:1366px)  {
 
   .uploadicon {
@@ -166,10 +159,6 @@
 
 }   */
 
- 
-
-  
- 
 /* @media only screen    and   (max-width:7680px)  {
 
 
@@ -200,31 +189,22 @@
  
   */
 
-  @media only screen    and   (max-width:7680px)  {
+@media only screen and (max-width: 7680px) {
+  .uploadicon {
+    margin-top: 1vh;
+    /* top:-80px; */
+    margin-left: 1vw;
+  }
+  .uploadicon svg {
+    size: 3vh;
+  }
 
-    .uploadicon {
-  
-      
-           margin-top:1vh;  
-         /* top:-80px; */
-       margin-left: 1vw;
-    
-   }
-   .uploadicon svg {
-    size:3vh;
-      
-   }
-  
-  .bottomline{
-    
-    border-top: 1px solid  rgb(231, 226, 226) ;
-    width:66.5vw;
-    height:0;
-    margin-top:14vh;
-    z-index:4;
-    box-shadow: -0.4vw -0vh 0.5vh 0.1vh rgb(231, 226, 226)  ;
+  .bottomline {
+    border-top: 1px solid rgb(231, 226, 226);
+    width: 66.5vw;
+    height: 0;
+    margin-top: 14vh;
+    z-index: 4;
+    box-shadow: -0.4vw -0vh 0.5vh 0.1vh rgb(231, 226, 226);
   }
-  
-  }
-   
-   
+}

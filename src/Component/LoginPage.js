@@ -2,45 +2,37 @@ import React, { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "../css/Login.module.css";
 import axios from "axios";
-import { error } from "jquery";
 
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function LoginPage(props) {
   const history = useHistory();
 
-  const [userName,setUserName] = useState('');
-  const [Password,setPassword] = useState('');
-  const [ipAdd, setIpAdd] =useState('')
+  const [userName, setUserName] = useState("");
+  const [Password, setPassword] = useState("");
+  const [ipAdd, setIpAdd] = useState("");
   const [takepopinput, setTakepopinput] = useState("");
   const [data, setData] = useState([]);
   const usernameref = useRef();
   const passwordref = useRef();
   const popref = useRef();
 
+  const userNameHandler = (e) => {
+    setUserName(e.target.value);
+  };
 
-const userNameHandler = (e)=>{
-setUserName(e.target.value)
-}
- 
-const  PasswordHandler = (e)=>{
- setPassword(e.target.value)
-  }
-  const  ipAddHandler = (e)=>{
-     setIpAdd(e.target.value)
-    }
-console.log(userName,Password,ipAdd)
-
-// useEffect(()=>{
-//   usernameref.current.focus()
-//   passwordref.current.focus()
-//   popref.current.focus()
-// },[])
+  const PasswordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+  const ipAddHandler = (e) => {
+    setIpAdd(e.target.value);
+  };
+  console.log(userName, Password, ipAdd);
 
   const submithandler = async (e) => {
     e.preventDefault();
 
-     const popinput = popref.current.value;
+    const popinput = popref.current.value;
 
     setTakepopinput(popinput);
 
@@ -49,35 +41,29 @@ console.log(userName,Password,ipAdd)
     console.log(useradd, passadd);
     await axios
       .post(`http://${ipAdd}:3000/login`, {
-        username:  userName,
+        username: userName,
         password: Password,
       })
       .then((res) => {
         console.log("result::", res.data);
-        props.getTokenHandler(res.data.token,ipAdd)
-        
-        if(res.data.message=="Success"){
-             history.push("/CustomerPage");
+        props.getTokenHandler(res.data.token, ipAdd);
+
+        if (res.data.message == "Success") {
+          history.push("/CustomerPage");
         }
-        toast(res.data.message)
-        
-        
+        toast(res.data.message);
       })
       .catch((error) => {
         console.log(error, "from error");
-        if(error){
-          toast('Please Check your IP Address...')
+        if (error) {
+          toast("Please Check your IP Address...");
         }
-        
       });
   };
 
- 
-  
-
   return (
     <div>
-          <div className={classes.loginmain }>
+      <div className={classes.loginmain}>
         <div className={classes.login}>
           <div>
             <div>
@@ -86,8 +72,8 @@ console.log(userName,Password,ipAdd)
             <div className={classes.formoutline}>
               <form onSubmit={submithandler}>
                 <div className={classes.form}>
-<div>
-                <input
+                  <div>
+                    <input
                       type="text"
                       ref={popref}
                       placeholder="Please enter your IP Address"
@@ -98,7 +84,7 @@ console.log(userName,Password,ipAdd)
                   <div>
                     <input
                       type="text"
-                       ref={usernameref}
+                      ref={usernameref}
                       placeholder="Username"
                       onChange={userNameHandler}
                       value={userName}
@@ -107,7 +93,7 @@ console.log(userName,Password,ipAdd)
                   <div>
                     <input
                       type="password"
-                        ref={passwordref}
+                      ref={passwordref}
                       placeholder="Password"
                       onChange={PasswordHandler}
                       value={Password}
@@ -121,17 +107,10 @@ console.log(userName,Password,ipAdd)
             </div>
           </div>
         </div>
-      
-      {/********************* */}
-        
-       
-      
+      </div>
 
-
+      <ToastContainer />
     </div>
-
-    <ToastContainer />
-   </div>
   );
 }
 

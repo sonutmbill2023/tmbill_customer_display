@@ -1,19 +1,16 @@
-
-.loginmain{
-
-    width:550px;
-height: 300px;
-border:2px solid rgb(219, 217, 217);
-border-radius:10px;
-display: flex;
-flex-direction:column;
-align-items: center;
-justify-content: center;
- position:absolute;
- top:50%;
- left:50%;
- transform: translate(-50%,-50%);
-
+.loginmain {
+  width: 550px;
+  height: 300px;
+  border: 2px solid rgb(219, 217, 217);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /* .login{
     display: flex;
@@ -22,28 +19,27 @@ justify-content: center;
     left: 50%;
     transform: translate(-50%,-50%);
 } */
-.formoutline{
-    width:510px;
+.formoutline {
+  width: 510px;
 }
 .form input {
-     padding:8px;
-     /* color: rgb(179, 176, 176); */
-      color: black;
-     border-radius:6px;
-     border:1px solid #dcd8d8e8;
-    margin-top: 5px;
-    margin-bottom:5px;
-    background-color:#f4f4f4e8;
-   
-   width:100%;
-   min-width:100px;
+  padding: 8px;
+  /* color: rgb(179, 176, 176); */
+  color: black;
+  border-radius: 6px;
+  border: 1px solid #dcd8d8e8;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #f4f4f4e8;
+
+  width: 100%;
+  min-width: 100px;
 }
 
-.form button{
-    margin-left:440px;
-    margin-top:15px;
+.form button {
+  margin-left: 440px;
+  margin-top: 15px;
 }
-
 
 /* ************************popup */
 
@@ -57,51 +53,43 @@ justify-content: center;
      left:50%;
      transform: translate(-50%,-50%);
 } */
-.popup{
-    border:2px solid rgb(219, 217, 217);
-    display: flex;
-   
-    align-items: center;
-    justify-content: space-around;
-     
-   
-    border-radius:10px;
-    line-height:0.8;
-     width:500px;
-    height:90px;
-   
+.popup {
+  border: 2px solid rgb(219, 217, 217);
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border-radius: 10px;
+  line-height: 0.8;
+  width: 500px;
+  height: 90px;
 }
-.popup p{
-    padding-left:10px;
-    margin-left:10px;
-      margin-top:12px;
+.popup p {
+  padding-left: 10px;
+  margin-left: 10px;
+  margin-top: 12px;
 }
 .popup button {
-     margin-left:30px;  
+  margin-left: 30px;
 }
 
 .input {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-left:-30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: -30px;
 }
 
-.input input{
-    padding:5px;
-     /* color: rgb(179, 176, 176); */
-     color: black;
-     border-radius:6px;
-     border:1px solid #dcd8d8e8;
-  
-     
-   
-    background-color:#f4f4f4e8;
-   
-   width:100%;
-   min-width:100px;
+.input input {
+  padding: 5px;
 
+  color: black;
+  border-radius: 6px;
+  border: 1px solid #dcd8d8e8;
+
+  background-color: #f4f4f4e8;
+
+  width: 100%;
+  min-width: 100px;
 }
-
-
- 

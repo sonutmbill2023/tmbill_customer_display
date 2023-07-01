@@ -12,7 +12,7 @@ function CustomerPage(props) {
 
   const [qrsrc, setQrSrc] = useState("");
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
-console.log(props.ipadd,'from customer display')
+  console.log(props.ipadd, "from customer display");
   useEffect(() => {
     socket.on("kot-saved", (data) => {
       const newdata = JSON.parse(data);
@@ -36,7 +36,7 @@ console.log(props.ipadd,'from customer display')
           )
           .then((res) => {
             setTableData(res.data.orderdata);
-            console.log(res.data,'from table-clicked')
+            console.log(res.data, "from table-clicked");
           });
       } catch (err) {
         console.log("err:", err);
@@ -44,7 +44,6 @@ console.log(props.ipadd,'from customer display')
     });
   }, []);
 
-  /************************** */
   useEffect(() => {
     QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`)
       .then((res) => {
@@ -60,8 +59,9 @@ console.log(props.ipadd,'from customer display')
       <UpcomingOffer />
       <div className={classes.main}>
         <div className={classes.header}>
-          <h4>BILL NUMBER: {tableData.order_id >0 ? tableData.order_id :null}</h4>
-          {/* <h4>ORDER ID:{tableData.bill_number}</h4> */}
+          <h4>
+            BILL NUMBER: {tableData.order_id > 0 ? tableData.order_id : null}
+          </h4>
         </div>
 
         <div className={classes.tablealign}>
@@ -69,204 +69,57 @@ console.log(props.ipadd,'from customer display')
             <table className="table table-bordered">
               <thead>
                 <tr>
-                  <th  style={{fontSize:'1.3vw',color:' #b4b0b0',textAlign:'center'}}>Item Name</th>
-                  <th  style={{fontSize:'1.3vw',color:'#b4b0b0',textAlign:'center'}}>Qty</th>
-                  <th   style={{fontSize:'1.3vw',color:'#b4b0b0',textAlign:'center'}}>Amount</th>
+                  <th
+                    style={{
+                      fontSize: "1.3vw",
+                      color: " #b4b0b0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Item Name
+                  </th>
+                  <th
+                    style={{
+                      fontSize: "1.3vw",
+                      color: "#b4b0b0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Qty
+                  </th>
+                  <th
+                    style={{
+                      fontSize: "1.3vw",
+                      color: "#b4b0b0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Amount
+                  </th>
                 </tr>
               </thead>
-                {tableData?.billItems?.map((item) => (
-              <tbody key={item.item_id}>
-                <tr   style={{fontSize:'1.2vw',color:'#333333 '}}>
-                  <td>{item.title}</td>
-                  <td  >{item.quantity}</td>
-                  <td>{item.amount}</td>
-                </tr>
-              </tbody>
-            ))}          
-               {/* <tbody>
-
-              <tr style={{fontSize:'1.3vw'}}>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr> <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-              </tbody>       */}
+              {tableData?.billItems?.map((item) => (
+                <tbody key={item.item_id}>
+                  <tr style={{ fontSize: "1.2vw", color: "#333333 " }}>
+                    <td>{item.title}</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.amount}</td>
+                  </tr>
+                </tbody>
+              ))}
             </table>
           </div>
         </div>
         <div className={classes.footer}>
           <div className={classes.amount}>
             <h3>TOTAL AMOUNT :</h3>
-            <h1>₹{tableData?.billDetails?.order_total}</h1> 
-          
+            <h1>₹{tableData?.billDetails?.order_total}</h1>
           </div>
           <div className={classes.pay}>
             <h6>SCAN TO PAY</h6>
-              {tableData?.billDetails?.order_total&&<img src={qrsrc} alt="qr" />}        
-                 {/* <img src={Qrimg} alt="qr" />    */}
+            {tableData?.billDetails?.order_total && (
+              <img src={qrsrc} alt="qr" />
+            )}
           </div>
         </div>
       </div>

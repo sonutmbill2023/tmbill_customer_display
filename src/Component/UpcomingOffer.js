@@ -10,24 +10,20 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
-import { confirmAlert } from 'react-confirm-alert'; // Import
-import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 
- import sound from '../asset/confirmationsound.wav'
+import sound from "../asset/confirmationsound.wav";
 function UpcomingOffer() {
-
-  // const [play] = useSound(boopSfx);
- 
-
   const history = useHistory();
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
 
   const [image3, setImage3] = useState("");
   const [uploadfile, setUploadFile] = useState(false);
-  const [logoutBUtton,setLogOutButton] = useState(false);
+  const [logoutBUtton, setLogOutButton] = useState(false);
   const imageHandler1 = (e) => {
     const file = e.target.files[0];
     localStorage.setItem("file1", file.name);
@@ -92,162 +88,149 @@ function UpcomingOffer() {
     }
   }, []);
 
+  /*logout confirmation */
+  const logout = () => {
+    new Audio(sound).play();
+    confirmAlert({
+      message: "Do you really want to exit?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            history.push("/Loginpage");
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+            return;
+          },
+        },
+      ],
+    });
+  };
 
-/*logout confirmation */
-const logout = () => {
-  
-new Audio(sound).play()
-  confirmAlert({
-      // title:'Do you really want to exit?',
-     message: 'Do you really want to exit?',
-    buttons: [
-      {
-        label: 'Yes',
-        onClick: () => {
-          history.push("/Loginpage" )
-        }
-      },
-      {
-        label: 'No',
-        onClick: () => {return  }  
-      }
-    ]
-  }
-  );
-
- 
-
-
-}
-
-  
-
-const SettingHandler = ()=>{
-   
-   setLogOutButton(!logoutBUtton)
-}
+  const SettingHandler = () => {
+    setLogOutButton(!logoutBUtton);
+  };
 
   return (
     <div>
-
-   
-    <div className={classes.main}>
-      <div className={classes.offer}>
-        <img src={UpcomeOffer} alt="offer" />
-      </div>
-      <div className={classes.img}>
-        <div>
-          {localStorage.getItem("image1") ? (
-            <img src={image1} alt="offer1" />
-          ) : (
-            <img src={offer1} alt="offer1" />
-          )}
+      <div className={classes.main}>
+        <div className={classes.offer}>
+          <img src={UpcomeOffer} alt="offer" />
         </div>
-        <div>
-          {localStorage.getItem("image2") ? (
-            <img src={image2} alt="offer1" />
-          ) : (
-            <img src={offer2} alt="offer1" />
-          )}
+        <div className={classes.img}>
+          <div>
+            {localStorage.getItem("image1") ? (
+              <img src={image1} alt="offer1" />
+            ) : (
+              <img src={offer1} alt="offer1" />
+            )}
+          </div>
+          <div>
+            {localStorage.getItem("image2") ? (
+              <img src={image2} alt="offer1" />
+            ) : (
+              <img src={offer2} alt="offer1" />
+            )}
+          </div>
+          <div>
+            {localStorage.getItem("image3") ? (
+              <img src={image3} alt="offer1" />
+            ) : (
+              <img src={offer1} alt="offer1" />
+            )}
+          </div>
         </div>
-        <div>
-          {localStorage.getItem("image3") ? (
-            <img src={image3} alt="offer1" />
-          ) : (
-            <img src={offer1} alt="offer1" />
-          )}
-        </div>
-      </div>
-      {/* <div className={classes.ico}>
+        {/* <div className={classes.ico}>
         <img src={tmbillimg} alt="ico" /> 
     </div> */}
 
-      {uploadfile && (
-        <div className={classes.setting}>
-          <div className={classes.settinghead}>
-            <h4>Select Offer Images from here... </h4>
-            <button
-              className="btn btn-default"
-              onClick={() => setUploadFile(false)}
-            >
-              <CloseIcon />
-            </button>
-          </div>
-          <div>
+        {uploadfile && (
+          <div className={classes.setting}>
+            <div className={classes.settinghead}>
+              <h4>Select Offer Images from here... </h4>
+              <button
+                className="btn btn-default"
+                onClick={() => setUploadFile(false)}
+              >
+                <CloseIcon />
+              </button>
+            </div>
             <div>
-              <p>
-                Note :{" "}
-                <small>
-                  You can upload an Image In JPEG, PNG ,GIF format and Fixed
-                  Aspect Ratio is 300 X 450.
-                </small>
-              </p>
-            </div>
-            <div className={classes.imglabel}>
-              <div className="uploadimage">
-              <section>Image - 1</section>
-                <input id="imgs1" type="file" onChange={imageHandler1} />
-                <label htmlFor="imgs1">  Choose File</label>
-                <span>
-                  {localStorage.getItem("file1")
-                    ? localStorage.getItem("file1")
-                    : "offer1.jpeg"}
-                </span>
+              <div>
+                <p>
+                  Note :{" "}
+                  <small>
+                    You can upload an Image In JPEG, PNG ,GIF format and Fixed
+                    Aspect Ratio is 300 X 450.
+                  </small>
+                </p>
               </div>
+              <div className={classes.imglabel}>
+                <div className="uploadimage">
+                  <section>Image - 1</section>
+                  <input id="imgs1" type="file" onChange={imageHandler1} />
+                  <label htmlFor="imgs1"> Choose File</label>
+                  <span>
+                    {localStorage.getItem("file1")
+                      ? localStorage.getItem("file1")
+                      : "offer1.jpeg"}
+                  </span>
+                </div>
 
-              <div className="uploadimage">
-              <section>Image - 2</section>
-                <input id="imgs2" type="file" onChange={imageHandler2} />
-              
-                <label htmlFor="imgs2">  Choose File</label>
-                <span>
-                  {localStorage.getItem("file2")
-                    ? localStorage.getItem("file2")
-                    : "offer2.jpeg"}
-                </span>
-              </div>
+                <div className="uploadimage">
+                  <section>Image - 2</section>
+                  <input id="imgs2" type="file" onChange={imageHandler2} />
 
-              <div className="uploadimage">
-                {/* <label htmlFor="imgs3">Offer3</label> */}
-                <section>Image - 3</section>
-                <input id="imgs3" type="file" onChange={imageHandler3} />
-                <label   htmlFor="imgs3">  Choose File</label>
-                <span >
-                  {localStorage.getItem("file3")
-                    ? localStorage.getItem("file3")
-                    : "offer3.jpeg"}
-                </span>
+                  <label htmlFor="imgs2"> Choose File</label>
+                  <span>
+                    {localStorage.getItem("file2")
+                      ? localStorage.getItem("file2")
+                      : "offer2.jpeg"}
+                  </span>
+                </div>
+
+                <div className="uploadimage">
+                  <section>Image - 3</section>
+                  <input id="imgs3" type="file" onChange={imageHandler3} />
+                  <label htmlFor="imgs3"> Choose File</label>
+                  <span>
+                    {localStorage.getItem("file3")
+                      ? localStorage.getItem("file3")
+                      : "offer3.jpeg"}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
+        )}
+
+        <div className="bottomline"> </div>
+
+        <div className="uploadicon">
+          <button
+            className="btn btn-default btn-sm"
+            onClick={() => SettingHandler()}
+          >
+            <SettingsIcon />
+          </button>
+          {logoutBUtton && (
+            <button
+              className="btn btn-default btn-sm"
+              onClick={() => setUploadFile(!uploadfile)}
+            >
+              <CloudUploadIcon />
+            </button>
+          )}
+
+          {logoutBUtton && (
+            <button className="btn btn-default btn-sm" onClick={() => logout()}>
+              <LogoutIcon />
+            </button>
+          )}
         </div>
-      )}
-
-      {/* *************** */}
-
-     
-    
-<div className='bottomline'> </div>
-
-
-    <div className="uploadicon">
-        <button
-          className="btn btn-default btn-sm"
-          onClick={() =>  SettingHandler()}
-        >
-          <SettingsIcon />
-        </button>
-        { logoutBUtton && (
- <button  className="btn btn-default btn-sm"  onClick={()=>setUploadFile(!uploadfile)} ><CloudUploadIcon/></button>)}
-
-
-        { logoutBUtton && (<button
-          className="btn btn-default btn-sm"
-          onClick={() =>  logout()} 
-        >
-          <LogoutIcon />
-        </button>)}
-      </div>
       </div>
     </div>
   );
