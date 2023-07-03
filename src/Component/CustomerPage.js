@@ -66,7 +66,7 @@ function CustomerPage(props) {
 
         <div className={classes.tablealign}>
           <div className={classes.table}>
-            <table className="table table-bordered">
+       { tableData?.billItems ? (   <table className="table table-bordered">
               <thead>
                 <tr>
                   <th
@@ -98,20 +98,20 @@ function CustomerPage(props) {
                   </th>
                 </tr>
               </thead>
-              {tableData?.billItems?.map((item) => (
-                <tbody key={item.item_id}>
-                  <tr style={{ fontSize: "1.2vw", color: "#333333 " }}>
+               {tableData?.billItems ?.map((item) => (
+                  <tbody key={item.item_id}>
+                 <tr style={{ fontSize: "1.2vw", color: "#333333 " }}>
                     <td>{item.title}</td>
                     <td>{item.quantity}</td>
                     <td>{item.amount}</td>
                   </tr>
                 </tbody>
-              ))}
-            </table>
+              ))}    
+            </table> ): <div  className={classes.nonitem}> Please  order your favourite food... </div>}
           </div>
         </div>
-        <div className={classes.footer}>
-          <div className={classes.amount}>
+      {tableData?.billDetails?.order_total ? (   <div className={classes.footer}>
+            <div className={classes.amount}>
             <h3>TOTAL AMOUNT :</h3>
             <h1>₹{tableData?.billDetails?.order_total}</h1>
           </div>
@@ -120,8 +120,8 @@ function CustomerPage(props) {
             {tableData?.billDetails?.order_total && (
               <img src={qrsrc} alt="qr" />
             )}
-          </div>
-        </div>
+          </div>  
+        </div> ):<h5 className={classes.footernonitem}>Please genrate bill</h5>}
       </div>
     </div>
   );

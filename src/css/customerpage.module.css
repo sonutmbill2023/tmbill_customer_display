@@ -959,4 +959,14 @@ border-bottom:1px solid green;
   .items {
     overflow-x: hidden;
   }
+
+  .nonitem {
+     margin-top:50%;
+margin-left:20%;
+    }
+
+    .footernonitem  {
+      margin-top:20%;
+      margin-left:25%;
+    }
 }
