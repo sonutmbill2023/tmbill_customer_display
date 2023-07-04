@@ -121,7 +121,7 @@ function CustomerPage(props) {
               <img src={qrsrc} alt="qr" />
             )}
           </div>  
-        </div> ):<h5 className={classes.footernonitem}>Please genrate bill</h5>}
+        </div> ):<h5 className={classes.footernonitem}>Please generate bill</h5>}
       </div>
     </div>
   );

@@ -61,9 +61,9 @@
 
 
 .upcometext{
-  width: 300px;
+  width: 350px;
   /* height: 220px; */
-  height: 200px;
+  height: 380px;
   position: absolute;
   /* margin-top: -300px; */
   top: 50%;
@@ -408,6 +408,23 @@ font-family: "Comic Sans MS", "Comic Sans"  ;
   .DoubleImg img {
     width: 27vw;  
     height: 52vh;
+  }
+
+
+
+  .logoutmodel{
+    width:300px;
+    height:110px;
+    border:1px solid  whitesmoke;
+    background-color: white;
+    border-radius: 12px;
+    text-align: center;
+    padding:10px;
+    box-shadow:2px 2px 8px  1px rgba(0, 0, 0, 0.19);
+  }
+
+  .logoutmodel button {
+     margin: 10px;
   }
 
 }

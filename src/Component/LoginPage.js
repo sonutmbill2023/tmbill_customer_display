@@ -31,7 +31,7 @@ function LoginPage(props) {
 
   const submithandler = async (e) => {
     e.preventDefault();
-
+     
     const popinput = popref.current.value;
 
     setTakepopinput(popinput);
@@ -43,22 +43,26 @@ function LoginPage(props) {
       .post(`http://${ipAdd}:3000/login`, {
         username: userName,
         password: Password,
-      })
+      },{ timeout: 900 })
       .then((res) => {
-        console.log("result::", res.data);
+        console.log("result::", res.data,'from loginpage response');
         props.getTokenHandler(res.data.token, ipAdd);
 
         if (res.data.message == "Success") {
           history.push("/CustomerPage");
         }
         toast(res.data.message);
+
+         
+
       })
       .catch((error) => {
         console.log(error, "from error");
         if (error) {
-          toast("Please Check your IP Address...");
+          toast("Please enter  correct IP Address...");
         }
       });
+      
   };
 
   return (
@@ -67,7 +71,7 @@ function LoginPage(props) {
         <div className={classes.login}>
           <div>
             <div>
-              <h2>{`Foodies-World`}</h2>
+             {localStorage.getItem('logintitle')?<h2>{localStorage.getItem('logintitle')}</h2> :<h2>Foodies-World</h2>} 
             </div>
             <div className={classes.formoutline}>
               <form onSubmit={submithandler}>
