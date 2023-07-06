@@ -19,7 +19,7 @@ function CustomerPage(props) {
       console.log(newdata);
     });
   }, []);
-
+   
   useEffect(() => {
     socket.on("table-clicked", async (data) => {
       console.log(data, "from table");
@@ -42,7 +42,10 @@ function CustomerPage(props) {
         console.log("err:", err);
       }
     });
-  }, []);
+  },[]);
+  
+
+  
 
   useEffect(() => {
     QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`)
@@ -53,7 +56,7 @@ function CustomerPage(props) {
         console.log(err);
       });
   }, [tableData]);
-
+ 
   return (
     <div style={{ display: "flex" }}>
       <UpcomingOffer />
@@ -121,7 +124,7 @@ function CustomerPage(props) {
               <img src={qrsrc} alt="qr" />
             )}
           </div>  
-        </div> ):<h5 className={classes.footernonitem}>Please generate bill</h5>}
+        </div> ):<p className={classes.footernonitem}>Payment Processing. Please wait a moment while we generate your payment...</p>}
       </div>
     </div>
   );

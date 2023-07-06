@@ -63,7 +63,7 @@
 .upcometext{
   width: 350px;
   /* height: 220px; */
-  height: 380px;
+  height: 220px;
   position: absolute;
   /* margin-top: -300px; */
   top: 50%;
@@ -77,10 +77,16 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.okbutton{
+margin-left:430px;
+position: absolute;
+margin-top:5px;
+}
+
 .setting {
-  width: 450px;
+  width: 480px;
   /* height: 220px; */
-  height: 260px;
+  height: 280px;
   position: absolute;
   /* margin-top: -300px; */
   top: 50%;
@@ -332,6 +338,7 @@ margin-top:-5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    
   }
 
   .offer img {
@@ -342,14 +349,22 @@ margin-top:-5px;
     /* margin-left: 22vw;  */
   }
 
-  .offer  h6 {
+  .offer  h1 {
     margin-top: 4vh;
     text-align: center;
 font-size:6vw;
-font-weight:800;
+ 
+font-weight:bolder;
 font-family: "Comic Sans MS", "Comic Sans"  ;
-    color:white;
-    text-shadow: 4px 4px 1px    #6ba613 , -4px -4px 1px  #6ba613;
+    
+   
+   
+    color: #fff;
+      -webkit-text-stroke-width: 5px;  
+           -webkit-text-stroke: 3px #6ba613 ; 
+         /*text-shadow:9px 0 #6ba613 , -9px 0 #6ba613, 0 9px #6ba613,  0 -9px #6ba613,  
+                 8px 9px #6ba613, -0px -10px #6ba613, 10px -10px #6ba613, -10px 10px #6ba613;    */   
+               ;
     height: 14vh;
     letter-spacing:-5px;
     /* margin-left: 22vw;  */

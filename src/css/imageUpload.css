@@ -207,4 +207,34 @@
     z-index: 4;
     box-shadow: -0.4vw -0vh 0.5vh 0.1vh rgb(231, 226, 226);
   }
+
+ 
+
+
+  .settingbutton button:hover::before{
+     background-color:whitesmoke;
+     border: 1px solid gainsboro;
+     padding:5px;
+    content:  'Setting';
+    position:absolute;
+    margin-top:-6vh;
+  }
+  
+  .uploadbutton button:hover::before{
+    background-color:whitesmoke;
+    border: 1px solid gainsboro;
+    padding:5px;
+   content:  'Upload';
+   position:absolute;
+   margin-top:-6vh;
+ }
+ 
+ .logoutbutton button:hover::before{
+  background-color:whitesmoke;
+  border: 1px solid gainsboro;
+  padding:5px;
+ content:  'Logout';
+ position:absolute;
+ margin-top:-6vh;
+}
 }

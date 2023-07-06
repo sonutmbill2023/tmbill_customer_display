@@ -43,7 +43,7 @@ function LoginPage(props) {
       .post(`http://${ipAdd}:3000/login`, {
         username: userName,
         password: Password,
-      },{ timeout: 900 })
+      },{ timeout: 300 })
       .then((res) => {
         console.log("result::", res.data,'from loginpage response');
         props.getTokenHandler(res.data.token, ipAdd);
@@ -71,7 +71,7 @@ function LoginPage(props) {
         <div className={classes.login}>
           <div>
             <div>
-             {localStorage.getItem('logintitle')?<h2>{localStorage.getItem('logintitle')}</h2> :<h2>Foodies-World</h2>} 
+              <h2>Foodies-World</h2> 
             </div>
             <div className={classes.formoutline}>
               <form onSubmit={submithandler}>

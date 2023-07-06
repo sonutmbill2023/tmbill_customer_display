@@ -15,12 +15,13 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import sound from "../asset/confirmationsound.wav";
 function UpcomingOffer() {
   const history = useHistory();
   const upcomeref = useRef();
-  const logintitleref  = useRef();
+
   const [image1, setImage1] = useState("");
   const [image2, setImage2] = useState("");
 
@@ -33,7 +34,7 @@ function UpcomingOffer() {
   const [logoutBUtton, setLogOutButton] = useState(false);
   const [upcomeningoffertext, setUpcomeningOfferText] = useState(false);
   const [upcomehook, setupcomehook] = useState("");
-  const [logintitlehook,setLoginTitleHook] = useState('')
+  const [logintitlehook, setLoginTitleHook] = useState("");
   const [threeImage, setTheeImage] = useState(() => {
     const storedState = window.localStorage.getItem("threeImage");
     return storedState ? JSON.parse(storedState) : true;
@@ -111,7 +112,10 @@ function UpcomingOffer() {
       reader.readAsDataURL(file);
     }
   };
-
+  const  settingpopupClosHanlder =()=>{
+  
+setUploadFile(false)
+}
   //double img
   const doubleimgone = (e) => {
     const file = e.target.files[0];
@@ -198,21 +202,27 @@ function UpcomingOffer() {
     //   ],
     // });
 
-confirmAlert({
-  customUI:({onClose})=>{
-    return (
-      <div  className={classes.logoutmodel}>
-        <h5>Do you really want to exit?</h5>
-      <button className="btn btn-dark btn-sm" onClick={()=>{
-         history.push("/Loginpage")
-        onClose();
-      }}>Yes</button>
-      <button    className="btn btn-dark btn-sm" onClick={onClose}>No</button>
-      </div>
-    )
-  }
-})
-
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className={classes.logoutmodel}>
+            <h5>Do you really want to exit?</h5>
+            <button
+              className="btn btn-dark btn-sm"
+              onClick={() => {
+                history.push("/Loginpage");
+                onClose();
+              }}
+            >
+              Yes
+            </button>
+            <button className="btn btn-dark btn-sm" onClick={onClose}>
+              No
+            </button>
+          </div>
+        );
+      },
+    });
   };
 
   const SettingHandler = () => {
@@ -254,7 +264,7 @@ confirmAlert({
 
   useEffect(() => {
     setupcomehook(localStorage.getItem("upcomeinput"));
-    setLoginTitleHook(localStorage.getItem('logintitle'))
+    setLoginTitleHook(localStorage.getItem("logintitle"));
   });
 
   const offerSubmitHandler = (e) => {
@@ -263,21 +273,48 @@ confirmAlert({
     localStorage.setItem("upcomeinput", upcomeinput);
     setupcomehook(upcomeinput);
     console.log(upcomeinput);
+
+    toast('Title Updated Successfully')
   };
+//  img remove
+  const Removeshow2img1 = ()=>{
+    localStorage.removeItem("doubleimgone")
+    localStorage.removeItem("doublenameone")
+    toast(' Image Removed Successfully')
+  }
+  const Removeshow2img2 = ()=>{
+    localStorage.removeItem("doubleimgtwo")
+    localStorage.removeItem("doublenametwo")
+    toast(' Image Removed Successfully')
+  }
+  const Removeshow1img1 = ()=>{
+    localStorage.removeItem("singleimgone")
+    localStorage.removeItem("Singlenameone")
+    toast(' Image Removed Successfully')
+  }
+  const Removeshow3img1 = ()=>{
+    localStorage.removeItem("image1")
+    
+    localStorage.removeItem("file1")
+    toast(' Image Removed Successfully')
+  }
+  const Removeshow3img2 = ()=>{
+    localStorage.removeItem("image2")
+    localStorage.removeItem("file2")
+    toast(' Image Removed Successfully')
+  }
+  const Removeshow3img3 = ()=>{
+    localStorage.removeItem("image3")
+    localStorage.removeItem("file3")
+    toast(' Image Removed Successfully')
+  }
 
-
-   const logintitleHandler =(e)=>{
-    e.preventDefault()
-    const logintile = logintitleref.current.value
-    localStorage.setItem('logintitle',logintile)
-    setLoginTitleHook(logintile)
-   }
   return (
     <div>
       <div className={classes.main}>
         <div className={classes.offer}>
           {upcomehook ? (
-            <h6>{upcomehook}</h6>
+            <h1>{upcomehook}</h1>
           ) : (
             <img src={UpcomeOffer} alt="offer" />
           )}
@@ -354,10 +391,10 @@ confirmAlert({
             <div className={classes.settinghead}>
               <h4>Select Offer Images from here... </h4>
               <button
-                className="btn btn-default"
-                onClick={() => setUploadFile(false)}
+                 className="btn btn-danger btn-sm"
+                onClick={settingpopupClosHanlder}
               >
-                <CloseIcon />
+                X
               </button>
             </div>
             {/* button settin1 */}
@@ -387,7 +424,7 @@ confirmAlert({
                 className="btn btn-default btn-sm  "
                 onClick={upcomingOfferHandler}
               >
-                 Offer & Title
+                Offer & Title
               </button>
             </div>
 
@@ -397,14 +434,14 @@ confirmAlert({
                 <div className={classes.offerhead}>
                   <h4> Change Offer and Title from here... </h4>
                   <button
-                    className="btn btn-default"
+                   className="btn btn-danger btn-sm"
                     onClick={() => setUpcomeningOfferText(false)}
                   >
-                    <CloseIcon />
+                     X
                   </button>
                 </div>
                 <div>
-                <div style={{ marginTop: "25px", textAlign: "center" }}>
+                  <div style={{ marginTop: "25px", textAlign: "center" }}>
                     <h6>{upcomehook}</h6>
                   </div>
                   <form onSubmit={offerSubmitHandler}>
@@ -416,35 +453,11 @@ confirmAlert({
                         ref={upcomeref}
                         maxLength={15}
                       />
-                      <button className="btn btn-warning btn-sm mt-2">
+                      <button className="btn btn-dark btn-sm mt-2">
                         Submit
                       </button>
                     </div>
                   </form>
-
-                  
-
-                  {/* login name */}
-
-                  <div style={{ marginTop: "25px", textAlign: "center" }}>
-                    <h6>{logintitlehook}</h6>
-                  </div>
-                  <form onSubmit={logintitleHandler}>
-                    <div className="form-group p-2">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Login Title"
-                        ref={ logintitleref}
-                        maxLength={40}
-                      />
-                      <button className="btn btn-warning btn-sm mt-2">
-                        Submit
-                      </button>
-                    </div>
-                  </form>
-                  {/*  */}
-                  
                 </div>
               </div>
             )}
@@ -471,6 +484,7 @@ confirmAlert({
                         ? localStorage.getItem("file1")
                         : "offer1.jpeg"}
                     </span>
+                    <button onClick={()=>Removeshow3img1()} className="btn btn-danger btn-sm">X</button>
                   </div>
 
                   <div className="uploadimage">
@@ -483,6 +497,7 @@ confirmAlert({
                         ? localStorage.getItem("file2")
                         : "offer2.jpeg"}
                     </span>
+                    <button onClick={()=>Removeshow3img2()} className="btn btn-danger btn-sm">X</button>
                   </div>
 
                   <div className="uploadimage">
@@ -494,6 +509,7 @@ confirmAlert({
                         ? localStorage.getItem("file3")
                         : "offer3.jpeg"}
                     </span>
+                    <button onClick={()=>Removeshow3img3()} className="btn btn-danger btn-sm">X</button>
                   </div>
                 </div>
               </div>
@@ -521,7 +537,11 @@ confirmAlert({
                         ? localStorage.getItem("doublenameone")
                         : "offer1.jpeg"}
                     </span>
+                  <div>
+                    <button onClick={()=>Removeshow2img1()} className="btn btn-danger btn-sm">X</button>
+                  </div> 
                   </div>
+                 
 
                   <div className="uploadimage">
                     <section>Image - 2</section>
@@ -533,6 +553,9 @@ confirmAlert({
                         ? localStorage.getItem("doublenametwo")
                         : "offer2.jpeg"}
                     </span>
+                    <div>
+                    <button onClick={()=>Removeshow2img2()} className="btn btn-danger btn-sm"> X</button>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -565,40 +588,58 @@ confirmAlert({
                         ? localStorage.getItem("Singlenameone")
                         : "offer1.jpeg"}
                     </span>
+                    <button onClick={()=>Removeshow1img1()} className="btn btn-danger btn-sm"> X</button>
                   </div>
                 </div>
               </div>
             )}
 
             {/* last imga  */}
+            <span className={classes.okbutton}>
+            <button
+                 className="btn btn-dark btn-sm"
+                onClick={settingpopupClosHanlder}
+              >
+                 ok
+              </button>
+              </span>
           </div>
         )}
 
         <div className="bottomline"> </div>
 
         <div className="uploadicon">
-          <button
+        <span className="settingbutton">
+
+          <button  
             className="btn btn-default btn-sm"
             onClick={() => SettingHandler()}
           >
             <SettingsIcon />
           </button>
+        </span>
           {logoutBUtton && (
+            
+            <span className="uploadbutton">
             <button
               className="btn btn-default btn-sm"
               onClick={() => setUploadFile(!uploadfile)}
             >
               <CloudUploadIcon />
-            </button>
+            </button></span>
           )}
 
           {logoutBUtton && (
+            <span className="logoutbutton">
             <button className="btn btn-default btn-sm" onClick={() => logout()}>
               <LogoutIcon />
-            </button>
+            </button></span>
           )}
         </div>
+
+         <ToastContainer/>
       </div>
+     
     </div>
   );
 }
