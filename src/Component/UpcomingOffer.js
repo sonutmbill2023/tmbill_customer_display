@@ -18,6 +18,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import sound from "../asset/confirmationsound.wav";
+import DeleteIcon from '@mui/icons-material/Delete';
 function UpcomingOffer() {
   const history = useHistory();
   const upcomeref = useRef();
@@ -386,15 +387,16 @@ setUploadFile(false)
         <img src={tmbillimg} alt="ico" /> 
     </div> */}
 
-        {uploadfile && (
+          {uploadfile && (  
           <div className={classes.setting}>
             <div className={classes.settinghead}>
-              <h4>Select Offer Images from here... </h4>
+              {/* <h4>Select Offer Images from here... </h4> */}
+             <h3>Uploads</h3>
               <button
-                 className="btn btn-danger btn-sm"
+                 className="btn btn-default btn-sm"
                 onClick={settingpopupClosHanlder}
               >
-                X
+                 <CloseIcon />
               </button>
             </div>
             {/* button settin1 */}
@@ -484,7 +486,7 @@ setUploadFile(false)
                         ? localStorage.getItem("file1")
                         : "offer1.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow3img1()} className="btn btn-danger btn-sm">X</button>
+                    <button onClick={()=>Removeshow3img1()} className="btn btn-default btn-sm"><DeleteIcon/></button>
                   </div>
 
                   <div className="uploadimage">
@@ -497,7 +499,7 @@ setUploadFile(false)
                         ? localStorage.getItem("file2")
                         : "offer2.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow3img2()} className="btn btn-danger btn-sm">X</button>
+                    <button onClick={()=>Removeshow3img2()} className="btn btn-default btn-sm"><DeleteIcon/></button>
                   </div>
 
                   <div className="uploadimage">
@@ -509,7 +511,7 @@ setUploadFile(false)
                         ? localStorage.getItem("file3")
                         : "offer3.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow3img3()} className="btn btn-danger btn-sm">X</button>
+                    <button onClick={()=>Removeshow3img3()} className="btn btn-default btn-sm"><DeleteIcon/></button>
                   </div>
                 </div>
               </div>
@@ -528,7 +530,7 @@ setUploadFile(false)
                   </p>
                 </div>
                 <div className={classes.imglabel}>
-                  <div className="uploadimage">
+                  <div className="uploadimage"  style={{marginTop:'30px'}} >
                     <section>Image - 1</section>
                     <input id="doubleone" type="file" onChange={doubleimgone} />
                     <label htmlFor="doubleone"> Choose File</label>
@@ -538,12 +540,12 @@ setUploadFile(false)
                         : "offer1.jpeg"}
                     </span>
                   <div>
-                    <button onClick={()=>Removeshow2img1()} className="btn btn-danger btn-sm">X</button>
+                    <button onClick={()=>Removeshow2img1()} className="btn btn-default btn-sm"><DeleteIcon/></button>
                   </div> 
                   </div>
                  
 
-                  <div className="uploadimage">
+                  <div className="uploadimage" style={{marginTop:'18px',marginBottom:'15px'}}>
                     <section>Image - 2</section>
                     <input id="doubletwo" type="file" onChange={doubleimgtwo} />
 
@@ -554,7 +556,7 @@ setUploadFile(false)
                         : "offer2.jpeg"}
                     </span>
                     <div>
-                    <button onClick={()=>Removeshow2img2()} className="btn btn-danger btn-sm"> X</button>
+                    <button onClick={()=>Removeshow2img2()} className="btn btn-default btn-sm"><DeleteIcon/></button>
                   </div>
                   </div>
                 </div>
@@ -575,7 +577,7 @@ setUploadFile(false)
                   </p>
                 </div>
                 <div className={classes.imglabel}>
-                  <div className="uploadimage">
+                  <div className="uploadimage" style={{marginTop:'35px',marginBottom:'60px'}}>
                     <section>Image - 1</section>
                     <input
                       id="singleone"
@@ -588,7 +590,7 @@ setUploadFile(false)
                         ? localStorage.getItem("Singlenameone")
                         : "offer1.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow1img1()} className="btn btn-danger btn-sm"> X</button>
+                    <button onClick={()=>Removeshow1img1()} className="btn btn-default btn-sm"><DeleteIcon/></button>
                   </div>
                 </div>
               </div>
@@ -604,7 +606,7 @@ setUploadFile(false)
               </button>
               </span>
           </div>
-        )}
+          )}  
 
         <div className="bottomline"> </div>
 
