@@ -14,6 +14,8 @@ function CustomerPage(props) {
   const [qrsrc, setQrSrc] = useState("");
   const [QrsrcQuickbill , setQrSrcquickbill] = useState("")
 const [quickBill ,setQuickBill] = useState([])
+const [dineinTotalAmount ,setDineInTotalAmount] = useState([])
+const [quickbillitems ,setQuickBillItems] = useState([])
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
   console.log(props.ipadd, "from customer display");
 
@@ -24,15 +26,16 @@ const [quickBill ,setQuickBill] = useState([])
 
     socket.on('quick-bill-placed',(data)=>{
        
-      setQuickBill(  data )
+       setQuickBill(  data )
+      // setQuickBillItems(  data )
       setTableData('');
       setDinePaymentRecieved("");
       console.log(data,'form quickbill')
-      
+      setDineInTotalAmount("")
     })
   },[]);
 
-  console.log(quickBill?.items?.[0].title,'form quickbill')
+   
 
   useEffect(() => {
     socket.on("kot-saved", (data) => {
@@ -40,6 +43,13 @@ const [quickBill ,setQuickBill] = useState([])
       console.log(newdata);
     });
   }, []);
+
+  useEffect(()=>{
+    socket.on("bill-settled",(data)=>{
+      setTableData("");
+ 
+    })
+  },[])
 
   useEffect(() => {
     socket.on("payment-received", (data) => {
@@ -65,13 +75,17 @@ const [quickBill ,setQuickBill] = useState([])
             setTableData(res.data.orderdata);
             console.log(res.data, "from table-clicked");
             setDinePaymentRecieved("");
-             quickBill('')
+             setQuickBill("")
           });
       } catch (err) {
         console.log("err:", err);
       }
+      setDineInTotalAmount(data.order_total)
+      
     });
   }, []);
+ 
+ 
 
   useEffect(() => {
     QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`)
@@ -107,14 +121,15 @@ const [quickBill ,setQuickBill] = useState([])
         <div className={classes.tablealign}>
           <div className={classes.table}>
             
-              <table className="table table-bordered">
-                <thead>
-                  <tr>
+              <table className="table table-bordered"  >
+                <thead  className={classes.tableheadtext} >
+                  <tr  >
                     <th
                       style={{
                         fontSize: "1.3vw",
                         color: " #b4b0b0",
                         textAlign: "center",
+                        
                       }}
                     >
                       Item Name
@@ -124,6 +139,7 @@ const [quickBill ,setQuickBill] = useState([])
                         fontSize: "1.3vw",
                         color: "#b4b0b0",
                         textAlign: "center",
+                         
                       }}
                     >
                       Qty
@@ -133,6 +149,7 @@ const [quickBill ,setQuickBill] = useState([])
                         fontSize: "1.3vw",
                         color: "#b4b0b0",
                         textAlign: "center",
+                        
                       }}
                     >
                       Amount
@@ -140,7 +157,7 @@ const [quickBill ,setQuickBill] = useState([])
                   </tr>
                 </thead>
                
-    {  tableData?.billItems ? ( <tbody > {tableData?.billItems?.map((item) => (
+    {  tableData?.billItems ? ( <tbody className={classes.tablebody}> {tableData?.billItems?.map((item) => (
                  
                     <tr key={item.item_id} style={{ fontSize: "1.2vw", color: "#333333 " }}>
                       <td>{item.title}</td>
@@ -148,7 +165,7 @@ const [quickBill ,setQuickBill] = useState([])
                       <td>{item.amount}</td>
                     </tr>
                   
-                ))}</tbody>)  : quickBill?.items  ? ( <tbody >
+                ))}</tbody>)  : quickBill?.items  ? ( <tbody  className={classes.tablebody}>
                 { quickBill?.items.map((item)=>(
                  
                     <tr  key={item.id}  style={{ fontSize: "1.2vw", color: "#333333 " }}>
@@ -160,7 +177,7 @@ const [quickBill ,setQuickBill] = useState([])
             ))}</tbody>) : (
               <div className={classes.nonitem}>
                 {" "}
-                Please order your favourite food...{" "}
+              <p> Please order your favourite food...</p> {" "}
               </div>
             )}
               </table>
@@ -173,17 +190,17 @@ const [quickBill ,setQuickBill] = useState([])
             <h6>Payment Successful!</h6>
             <p>Thank you! Your payment is complete</p>
           </div>
-        ) : tableData?.billDetails?.order_total || quickBill?.order_total ? (
+        ) :  dineinTotalAmount || quickBill?.order_total ? (
           <div className={classes.footer}>
             <div className={classes.amount}>
               <h3>TOTAL AMOUNT :</h3>
-            { tableData?.billDetails?.order_total && (<h1>₹{tableData?.billDetails?.order_total}</h1>
+            {  dineinTotalAmount && (<h1>₹{dineinTotalAmount}</h1>
          )  ||  quickBill?.order_total && ( <h1>₹{quickBill?.order_total}</h1> )}  
               
             </div>
             <div className={classes.pay}>
-              <h6>SCAN TO PAY</h6>
-              {tableData?.billDetails?.field2 && (<img src={qrsrc} alt="qr" />) || quickBill?.Payment_qr && ( <img src={QrsrcQuickbill} alt="qr" />)  }
+              
+              {tableData?.billDetails?.order_total==dineinTotalAmount && (<span> <h6>SCAN TO PAY</h6> <img src={qrsrc} alt="qr" /> </span>) || quickBill?.Payment_qr && (<span> <h6>SCAN TO PAY</h6>  <img src={QrsrcQuickbill} alt="qr" /> </span>)  }
             </div>
           </div>
         ) : (

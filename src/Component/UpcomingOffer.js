@@ -18,7 +18,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import sound from "../asset/confirmationsound.wav";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 function UpcomingOffer() {
   const history = useHistory();
   const upcomeref = useRef();
@@ -58,6 +58,7 @@ function UpcomingOffer() {
         const imageDataUrl = reader.result;
         setImage1(imageDataUrl);
         localStorage.setItem("image1", imageDataUrl);
+        toast(" Image Uploaded Successfully");
       };
       reader.readAsDataURL(file);
     }
@@ -74,6 +75,7 @@ function UpcomingOffer() {
 
         setImage2(imageDataUrl);
         localStorage.setItem("image2", imageDataUrl);
+        toast(" Image Uploaded Successfully");
       };
 
       reader.readAsDataURL(file);
@@ -91,6 +93,7 @@ function UpcomingOffer() {
 
         setImage3(imageDataUrl);
         localStorage.setItem("image3", imageDataUrl);
+        toast(" Image Uploaded Successfully");
       };
       reader.readAsDataURL(file);
     }
@@ -109,14 +112,14 @@ function UpcomingOffer() {
 
         setSinleImgHookOne(imageDataUrl);
         localStorage.setItem("singleimgone", imageDataUrl);
+        toast(" Image Uploaded Successfully");
       };
       reader.readAsDataURL(file);
     }
   };
-  const  settingpopupClosHanlder =()=>{
-  
-setUploadFile(false)
-}
+  const settingpopupClosHanlder = () => {
+    setUploadFile(false);
+  };
   //double img
   const doubleimgone = (e) => {
     const file = e.target.files[0];
@@ -129,6 +132,7 @@ setUploadFile(false)
 
         setDoubleImgHookOne(imageDataUrl);
         localStorage.setItem("doubleimgone", imageDataUrl);
+        toast(" Image Uploaded Successfully");
       };
       reader.readAsDataURL(file);
     }
@@ -145,6 +149,7 @@ setUploadFile(false)
 
         setDoubleImgHookTwo(imageDataUrl);
         localStorage.setItem("doubleimgtwo", imageDataUrl);
+        toast(" Image Uploaded Successfully");
       };
       reader.readAsDataURL(file);
     }
@@ -275,40 +280,40 @@ setUploadFile(false)
     setupcomehook(upcomeinput);
     console.log(upcomeinput);
 
-    toast('Title Updated Successfully')
+    toast("Title Updated Successfully");
   };
-//  img remove
-  const Removeshow2img1 = ()=>{
-    localStorage.removeItem("doubleimgone")
-    localStorage.removeItem("doublenameone")
-    toast(' Image Removed Successfully')
-  }
-  const Removeshow2img2 = ()=>{
-    localStorage.removeItem("doubleimgtwo")
-    localStorage.removeItem("doublenametwo")
-    toast(' Image Removed Successfully')
-  }
-  const Removeshow1img1 = ()=>{
-    localStorage.removeItem("singleimgone")
-    localStorage.removeItem("Singlenameone")
-    toast(' Image Removed Successfully')
-  }
-  const Removeshow3img1 = ()=>{
-    localStorage.removeItem("image1")
-    
-    localStorage.removeItem("file1")
-    toast(' Image Removed Successfully')
-  }
-  const Removeshow3img2 = ()=>{
-    localStorage.removeItem("image2")
-    localStorage.removeItem("file2")
-    toast(' Image Removed Successfully')
-  }
-  const Removeshow3img3 = ()=>{
-    localStorage.removeItem("image3")
-    localStorage.removeItem("file3")
-    toast(' Image Removed Successfully')
-  }
+  //  img remove
+  const Removeshow2img1 = () => {
+    localStorage.removeItem("doubleimgone");
+    localStorage.removeItem("doublenameone");
+    toast(" Image Removed Successfully");
+  };
+  const Removeshow2img2 = () => {
+    localStorage.removeItem("doubleimgtwo");
+    localStorage.removeItem("doublenametwo");
+    toast(" Image Removed Successfully");
+  };
+  const Removeshow1img1 = () => {
+    localStorage.removeItem("singleimgone");
+    localStorage.removeItem("Singlenameone");
+    toast(" Image Removed Successfully");
+  };
+  const Removeshow3img1 = () => {
+    localStorage.removeItem("image1");
+
+    localStorage.removeItem("file1");
+    toast(" Image Removed Successfully");
+  };
+  const Removeshow3img2 = () => {
+    localStorage.removeItem("image2");
+    localStorage.removeItem("file2");
+    toast(" Image Removed Successfully");
+  };
+  const Removeshow3img3 = () => {
+    localStorage.removeItem("image3");
+    localStorage.removeItem("file3");
+    toast(" Image Removed Successfully");
+  };
 
   return (
     <div>
@@ -387,16 +392,16 @@ setUploadFile(false)
         <img src={tmbillimg} alt="ico" /> 
     </div> */}
 
-          {uploadfile && (  
+        {uploadfile && (
           <div className={classes.setting}>
             <div className={classes.settinghead}>
               {/* <h4>Select Offer Images from here... </h4> */}
-             <h3>Uploads</h3>
+              <h3>Uploads</h3>
               <button
-                 className="btn btn-default btn-sm"
+                className="btn btn-default btn-sm"
                 onClick={settingpopupClosHanlder}
               >
-                 <CloseIcon />
+                <CloseIcon />
               </button>
             </div>
             {/* button settin1 */}
@@ -408,19 +413,19 @@ setUploadFile(false)
                 className="btn btn-default btn-sm   "
                 onClick={threeImgaeHandler}
               >
-                Show three Images
+                Three Images
               </button>
               <button
                 className="btn btn-default btn-sm    "
                 onClick={twoImgaeHandler}
               >
-                Show two Images
+                Two Images
               </button>
               <button
                 className="btn btn-default btn-sm    "
                 onClick={oneImgaeHandler}
               >
-                Show one Images
+                One Image
               </button>
               <button
                 className="btn btn-default btn-sm  "
@@ -429,17 +434,17 @@ setUploadFile(false)
                 Offer & Title
               </button>
             </div>
-
+            <span className={classes.okbutton}>
             {/* upcoming  offer card */}
             {upcomeningoffertext && (
               <div className={classes.upcometext}>
                 <div className={classes.offerhead}>
-                  <h4> Change Offer and Title from here... </h4>
+                  <h4>Title</h4>
                   <button
-                   className="btn btn-danger btn-sm"
+                    className="btn btn-default btn-sm"
                     onClick={() => setUpcomeningOfferText(false)}
                   >
-                     X
+                    <CloseIcon />
                   </button>
                 </div>
                 <div>
@@ -451,9 +456,9 @@ setUploadFile(false)
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="upcoming offer"
+                        placeholder="title"
                         ref={upcomeref}
-                        maxLength={15}
+                        maxLength={16}
                       />
                       <button className="btn btn-dark btn-sm mt-2">
                         Submit
@@ -486,7 +491,12 @@ setUploadFile(false)
                         ? localStorage.getItem("file1")
                         : "offer1.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow3img1()} className="btn btn-default btn-sm"><DeleteIcon/></button>
+                    <button
+                      onClick={() => Removeshow3img1()}
+                      className="btn btn-default btn-sm"
+                    >
+                      <DeleteIcon />
+                    </button>
                   </div>
 
                   <div className="uploadimage">
@@ -499,7 +509,12 @@ setUploadFile(false)
                         ? localStorage.getItem("file2")
                         : "offer2.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow3img2()} className="btn btn-default btn-sm"><DeleteIcon/></button>
+                    <button
+                      onClick={() => Removeshow3img2()}
+                      className="btn btn-default btn-sm"
+                    >
+                      <DeleteIcon />
+                    </button>
                   </div>
 
                   <div className="uploadimage">
@@ -511,7 +526,12 @@ setUploadFile(false)
                         ? localStorage.getItem("file3")
                         : "offer3.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow3img3()} className="btn btn-default btn-sm"><DeleteIcon/></button>
+                    <button
+                      onClick={() => Removeshow3img3()}
+                      className="btn btn-default btn-sm"
+                    >
+                      <DeleteIcon />
+                    </button>
                   </div>
                 </div>
               </div>
@@ -530,7 +550,7 @@ setUploadFile(false)
                   </p>
                 </div>
                 <div className={classes.imglabel}>
-                  <div className="uploadimage"  style={{marginTop:'30px'}} >
+                  <div className="uploadimage" style={{ marginTop: "30px" }}>
                     <section>Image - 1</section>
                     <input id="doubleone" type="file" onChange={doubleimgone} />
                     <label htmlFor="doubleone"> Choose File</label>
@@ -539,13 +559,20 @@ setUploadFile(false)
                         ? localStorage.getItem("doublenameone")
                         : "offer1.jpeg"}
                     </span>
-                  <div>
-                    <button onClick={()=>Removeshow2img1()} className="btn btn-default btn-sm"><DeleteIcon/></button>
-                  </div> 
+                    <div>
+                      <button
+                        onClick={() => Removeshow2img1()}
+                        className="btn btn-default btn-sm"
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
                   </div>
-                 
 
-                  <div className="uploadimage" style={{marginTop:'18px',marginBottom:'15px'}}>
+                  <div
+                    className="uploadimage"
+                    style={{ marginTop: "18px", marginBottom: "15px" }}
+                  >
                     <section>Image - 2</section>
                     <input id="doubletwo" type="file" onChange={doubleimgtwo} />
 
@@ -556,8 +583,13 @@ setUploadFile(false)
                         : "offer2.jpeg"}
                     </span>
                     <div>
-                    <button onClick={()=>Removeshow2img2()} className="btn btn-default btn-sm"><DeleteIcon/></button>
-                  </div>
+                      <button
+                        onClick={() => Removeshow2img2()}
+                        className="btn btn-default btn-sm"
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -577,7 +609,10 @@ setUploadFile(false)
                   </p>
                 </div>
                 <div className={classes.imglabel}>
-                  <div className="uploadimage" style={{marginTop:'35px',marginBottom:'60px'}}>
+                  <div
+                    className="uploadimage"
+                    style={{ marginTop: "35px", marginBottom: "60px" }}
+                  >
                     <section>Image - 1</section>
                     <input
                       id="singleone"
@@ -590,58 +625,65 @@ setUploadFile(false)
                         ? localStorage.getItem("Singlenameone")
                         : "offer1.jpeg"}
                     </span>
-                    <button onClick={()=>Removeshow1img1()} className="btn btn-default btn-sm"><DeleteIcon/></button>
+                    <button
+                      onClick={() => Removeshow1img1()}
+                      className="btn btn-default btn-sm"
+                    >
+                      <DeleteIcon />
+                    </button>
                   </div>
                 </div>
               </div>
             )}
 
             {/* last imga  */}
-            <span className={classes.okbutton}>
-            <button
-                 className="btn btn-dark btn-sm"
+             
+              <button
+                className="btn btn-dark btn-sm"
                 onClick={settingpopupClosHanlder}
               >
-                 ok
+                ok
               </button>
-              </span>
+            </span>
           </div>
-          )}  
+        )}
 
         <div className="bottomline"> </div>
 
         <div className="uploadicon">
-        <span className="settingbutton">
-
-          <button  
-            className="btn btn-default btn-sm"
-            onClick={() => SettingHandler()}
-          >
-            <SettingsIcon />
-          </button>
-        </span>
-          {logoutBUtton && (
-            
-            <span className="uploadbutton">
+          <span className="settingbutton">
             <button
               className="btn btn-default btn-sm"
-              onClick={() => setUploadFile(!uploadfile)}
+              onClick={() => SettingHandler()}
             >
-              <CloudUploadIcon />
-            </button></span>
+              <SettingsIcon />
+            </button>
+          </span>
+          {logoutBUtton && (
+            <span className="uploadbutton">
+              <button
+                className="btn btn-default btn-sm"
+                onClick={() => setUploadFile(!uploadfile)}
+              >
+                <CloudUploadIcon />
+              </button>
+            </span>
           )}
 
           {logoutBUtton && (
             <span className="logoutbutton">
-            <button className="btn btn-default btn-sm" onClick={() => logout()}>
-              <LogoutIcon />
-            </button></span>
+              <button
+                className="btn btn-default btn-sm"
+                onClick={() => logout()}
+              >
+                <LogoutIcon />
+              </button>
+            </span>
           )}
         </div>
 
-         <ToastContainer/>
+        <ToastContainer />
       </div>
-     
     </div>
   );
 }
