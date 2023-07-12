@@ -7,35 +7,28 @@ import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import { io } from "socket.io-client";
 import axios from "axios";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 function CustomerPage(props) {
   const [tableData, setTableData] = useState([]);
   const [DinepaymentRecieved, setDinePaymentRecieved] = useState([]);
   const [qrsrc, setQrSrc] = useState("");
-  const [QrsrcQuickbill , setQrSrcquickbill] = useState("")
-const [quickBill ,setQuickBill] = useState([])
-const [dineinTotalAmount ,setDineInTotalAmount] = useState([])
-const [quickbillitems ,setQuickBillItems] = useState([])
+  const [QrsrcQuickbill, setQrSrcquickbill] = useState("");
+  const [quickBill, setQuickBill] = useState([]);
+  const [dineinTotalAmount, setDineInTotalAmount] = useState([]);
+  
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
   console.log(props.ipadd, "from customer display");
 
-
- 
-
   useEffect(() => {
-
-    socket.on('quick-bill-placed',(data)=>{
-       
-       setQuickBill(  data )
+    socket.on("quick-bill-placed", (data) => {
+      setQuickBill(data);
       // setQuickBillItems(  data )
-      setTableData('');
+      setTableData("");
       setDinePaymentRecieved("");
-      console.log(data,'form quickbill')
-      setDineInTotalAmount("")
-    })
-  },[]);
-
-   
+      console.log(data, "form quickbill");
+      setDineInTotalAmount("");
+    });
+  }, []);
 
   useEffect(() => {
     socket.on("kot-saved", (data) => {
@@ -44,20 +37,17 @@ const [quickbillitems ,setQuickBillItems] = useState([])
     });
   }, []);
 
-  useEffect(()=>{
-    socket.on("bill-settled",(data)=>{
+  useEffect(() => {
+    socket.on("bill-settled", (data) => {
       setTableData("");
- 
-    })
-  },[])
+    });
+  }, []);
 
   useEffect(() => {
     socket.on("payment-received", (data) => {
       setDinePaymentRecieved(data);
     });
   });
-
-  
 
   useEffect(() => {
     socket.on("table-clicked", async (data) => {
@@ -75,17 +65,14 @@ const [quickbillitems ,setQuickBillItems] = useState([])
             setTableData(res.data.orderdata);
             console.log(res.data, "from table-clicked");
             setDinePaymentRecieved("");
-             setQuickBill("")
+            setQuickBill("");
           });
       } catch (err) {
         console.log("err:", err);
       }
-      setDineInTotalAmount(data.order_total)
-      
+      setDineInTotalAmount(data.order_total);
     });
   }, []);
- 
- 
 
   useEffect(() => {
     QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`)
@@ -115,92 +102,105 @@ const [quickbillitems ,setQuickBillItems] = useState([])
           <h4>
             BILL NUMBER: {tableData.order_id > 0 ? tableData.order_id : null}
           </h4>
-          
         </div>
 
         <div className={classes.tablealign}>
           <div className={classes.table}>
-            
-              <table className="table table-bordered"  >
-                <thead  className={classes.tableheadtext} >
-                  <tr  >
-                    <th
-                      style={{
-                        fontSize: "1.3vw",
-                        color: " #b4b0b0",
-                        textAlign: "center",
-                        
-                      }}
+            <table className="table table-bordered">
+              <thead className={classes.tableheadtext}>
+                <tr>
+                  <th
+                    style={{
+                      fontSize: "1.3vw",
+                      color: " #b4b0b0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Item Name
+                  </th>
+                  <th
+                    style={{
+                      fontSize: "1.3vw",
+                      color: "#b4b0b0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Qty
+                  </th>
+                  <th
+                    style={{
+                      fontSize: "1.3vw",
+                      color: "#b4b0b0",
+                      textAlign: "center",
+                    }}
+                  >
+                    Amount
+                  </th>
+                </tr>
+              </thead>
+
+              {tableData?.billItems ? (
+                <tbody className={classes.tablebody}>
+                  {" "}
+                  {tableData?.billItems?.map((item) => (
+                    <tr
+                      key={item.item_id}
+                      style={{ fontSize: "1.2vw", color: "#333333 " }}
                     >
-                      Item Name
-                    </th>
-                    <th
-                      style={{
-                        fontSize: "1.3vw",
-                        color: "#b4b0b0",
-                        textAlign: "center",
-                         
-                      }}
-                    >
-                      Qty
-                    </th>
-                    <th
-                      style={{
-                        fontSize: "1.3vw",
-                        color: "#b4b0b0",
-                        textAlign: "center",
-                        
-                      }}
-                    >
-                      Amount
-                    </th>
-                  </tr>
-                </thead>
-               
-    {  tableData?.billItems ? ( <tbody className={classes.tablebody}> {tableData?.billItems?.map((item) => (
-                 
-                    <tr key={item.item_id} style={{ fontSize: "1.2vw", color: "#333333 " }}>
                       <td>{item.title}</td>
                       <td>{item.quantity}</td>
                       <td>{item.amount}</td>
                     </tr>
-                  
-                ))}</tbody>)  : quickBill?.items  ? ( <tbody  className={classes.tablebody}>
-                { quickBill?.items.map((item)=>(
-                 
-                    <tr  key={item.id}  style={{ fontSize: "1.2vw", color: "#333333 " }}>
+                  ))}
+                </tbody>
+              ) : quickBill?.items ? (
+                <tbody className={classes.tablebody}>
+                  {quickBill?.items.map((item) => (
+                    <tr
+                      key={item.id}
+                      style={{ fontSize: "1.2vw", color: "#333333 " }}
+                    >
                       <td>{item.title}</td>
                       <td>{item.quantity}</td>
                       <td>{item.amount}</td>
                     </tr>
-                  
-            ))}</tbody>) : (
-              <div className={classes.nonitem}>
-                {" "}
-              <p> Please order your favourite food...</p> {" "}
-              </div>
-            )}
-              </table>
-              
+                  ))}
+                </tbody>
+              ) : (
+                <div className={classes.nonitem}>
+                  {" "}
+                  <p> Please order your favourite food...</p>{" "}
+                </div>
+              )}
+            </table>
           </div>
         </div>
         {DinepaymentRecieved?.msg ? (
           <div className={classes.paymentRecieved}>
-           <CheckCircleIcon/>
+            <CheckCircleIcon />
             <h6>Payment Successful!</h6>
             <p>Thank you! Your payment is complete</p>
           </div>
-        ) :  dineinTotalAmount || quickBill?.order_total ? (
+        ) : dineinTotalAmount || quickBill?.order_total ? (
           <div className={classes.footer}>
             <div className={classes.amount}>
               <h3>TOTAL AMOUNT :</h3>
-            {  dineinTotalAmount && (<h1>₹{dineinTotalAmount}</h1>
-         )  ||  quickBill?.order_total && ( <h1>₹{quickBill?.order_total}</h1> )}  
-              
+              {(dineinTotalAmount && <h1>₹{dineinTotalAmount}</h1>) ||
+                (quickBill?.order_total && <h1>₹{quickBill?.order_total}</h1>)}
             </div>
             <div className={classes.pay}>
-              
-              {tableData?.billDetails?.order_total==dineinTotalAmount && (<span> <h6>SCAN TO PAY</h6> <img src={qrsrc} alt="qr" /> </span>) || quickBill?.Payment_qr && (<span> <h6>SCAN TO PAY</h6>  <img src={QrsrcQuickbill} alt="qr" /> </span>)  }
+              {(tableData?.billDetails?.order_total == dineinTotalAmount && (
+                <span>
+                  {" "}
+                  <h6>SCAN TO PAY</h6> <img src={qrsrc} alt="qr" />{" "}
+                </span>
+              )) ||
+                (quickBill?.Payment_qr && (
+                  <span>
+                    {" "}
+                    <h6>SCAN TO PAY</h6> <img src={QrsrcQuickbill} alt="qr" />{" "}
+                  </span>
+                ))}
             </div>
           </div>
         ) : (

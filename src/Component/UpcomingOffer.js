@@ -392,7 +392,7 @@ function UpcomingOffer() {
         <img src={tmbillimg} alt="ico" /> 
     </div> */}
 
-        {uploadfile && (
+          {uploadfile && (    
           <div className={classes.setting}>
             <div className={classes.settinghead}>
               {/* <h4>Select Offer Images from here... </h4> */}
@@ -448,10 +448,11 @@ function UpcomingOffer() {
                   </button>
                 </div>
                 <div>
-                  <div style={{ marginTop: "25px", textAlign: "center" }}>
-                    <h6>{upcomehook}</h6>
+                  <div style={{ marginTop: "2.5vw", textAlign: "center" }}>
+                    <h6 style={{fontSize:'2vw'}} >{upcomehook}</h6>
                   </div>
                   <form onSubmit={offerSubmitHandler}>
+                   <div  className={classes.formInput}>
                     <div className="form-group p-2">
                       <input
                         type="text"
@@ -463,6 +464,7 @@ function UpcomingOffer() {
                       <button className="btn btn-dark btn-sm mt-2">
                         Submit
                       </button>
+                    </div>
                     </div>
                   </form>
                 </div>
@@ -550,7 +552,7 @@ function UpcomingOffer() {
                   </p>
                 </div>
                 <div className={classes.imglabel}>
-                  <div className="uploadimage" style={{ marginTop: "30px" }}>
+                  <div className="uploadimage" style={{ marginTop: "3vw" }}>
                     <section>Image - 1</section>
                     <input id="doubleone" type="file" onChange={doubleimgone} />
                     <label htmlFor="doubleone"> Choose File</label>
@@ -571,7 +573,7 @@ function UpcomingOffer() {
 
                   <div
                     className="uploadimage"
-                    style={{ marginTop: "18px", marginBottom: "15px" }}
+                    style={{ marginTop: "1.8vw", marginBottom: "1.5vw" }}
                   >
                     <section>Image - 2</section>
                     <input id="doubletwo" type="file" onChange={doubleimgtwo} />
@@ -611,7 +613,7 @@ function UpcomingOffer() {
                 <div className={classes.imglabel}>
                   <div
                     className="uploadimage"
-                    style={{ marginTop: "35px", marginBottom: "60px" }}
+                    style={{ marginTop: "3.5vw", marginBottom: "6vw" }}
                   >
                     <section>Image - 1</section>
                     <input
@@ -638,15 +640,15 @@ function UpcomingOffer() {
 
             {/* last imga  */}
              
-              <button
+              <button  style={{fontSize:"1.5vw",padding:"0.5vw",borderRadius:'0.4vw'}}
                 className="btn btn-dark btn-sm"
                 onClick={settingpopupClosHanlder}
               >
-                ok
+                OK
               </button>
             </span>
           </div>
-        )}
+         )}  
 
         <div className="bottomline"> </div>
 

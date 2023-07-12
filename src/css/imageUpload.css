@@ -1,18 +1,19 @@
 .uploadimage {
-  height: 60px;
-  width:490px;
-  margin:10px;
+  height: 6vw;
+  width:49vw;
+  margin:1vw;
   display: flex;
   align-items: center;
-  border: 1px solid whitesmoke;
-  box-shadow:1px 1px 5px 0px  rgba(0.2,0, 0.2, 0.19) ;
-  border-radius:3px;
+  border: 0.1vw solid whitesmoke;
+  box-shadow:0.1vw 0.1vw  0.5vw 0  rgba(0.2,0, 0.2, 0.19) ;
+  border-radius:0.3vw;
   
 }
 
 .uploadimage section {
-  padding: 8px;
-  margin-top: 5px;
+  padding:0.8vw;
+  margin-top: 0.5vw;
+  font-size: 1.6vw;
   font-weight: bolder;
 }
 .uploadimage input {
@@ -21,26 +22,28 @@
 
 .uploadimage label {
   background-color: lightgrey;
-  border: 1px solid grey;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  padding: 3px;
-  font-size: 16px;
-  margin-left: 20px;
-  margin-right: 0px;
+  border: 0.1vw solid grey;
+  border-top-left-radius:0.4vw;
+  border-bottom-left-radius: 0.4vw;
+  padding: 0.3vw;
+  font-size: 1.6vw;
+  margin-left: 2vw;
+  margin-right: 0;
 }
 .uploadimage span {
-  width: 230px;
-  margin-right: 10px;
+  width: 23vw;
+  margin-right: 1vw;
   background-color: #6ba613;
   color: white;
-  font-size: 16px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  padding: 4px;
+  font-size: 1.6vw;
+  border-top-right-radius: 0.4vw;
+  border-bottom-right-radius: 0.4vw;
+  padding: 0.4vw;
   overflow: hidden;
 }
- 
+ .uploadimage svg{
+  font-size: 3vw;
+ }
 
 /* .uploadicon {
   margin-top: 95px;
@@ -197,18 +200,19 @@
  
   */
 
-@media only screen and (max-width: 7680px) {
+/* @media only screen and (max-width: 7680px) { */
   .uploadicon {
     margin-top: 1vh;
     /* top:-80px; */
     margin-left: 1vw;
   }
   .uploadicon svg {
-    size: 3vh;
+    font-size: 2.5vw;
+    margin-right: 1vw;
   }
 
   .bottomline {
-    border-top: 1px solid rgb(231, 226, 226);
+    border-top: 0.1vw solid rgb(231, 226, 226);
     width: 66.5vw;
     height: 0;
     margin-top: 14vh;
@@ -221,28 +225,34 @@
 
   .settingbutton button:hover::before{
      background-color:whitesmoke;
-     border: 1px solid gainsboro;
-     padding:5px;
+     border: 0.1vw solid gainsboro;
+     padding:0.4vw;
+     font-size: 1vw;
     content:  'Setting';
     position:absolute;
     margin-top:-6vh;
   }
   
+  /* .settingbutton button svg{
+    size:2vw;
+  } */
   .uploadbutton button:hover::before{
     background-color:whitesmoke;
-    border: 1px solid gainsboro;
-    padding:5px;
+    border: 0.1vw solid gainsboro;
+    padding:0.5vw;
    content:  'Upload';
    position:absolute;
    margin-top:-6vh;
+   font-size: 1vw;
  }
  
  .logoutbutton button:hover::before{
   background-color:whitesmoke;
-  border: 1px solid gainsboro;
-  padding:5px;
+  border: 0.1vw solid gainsboro;
+  padding:0.4vw;
  content:  'Logout';
  position:absolute;
  margin-top:-6vh;
+ font-size: 1vw;
 }
-}
+/* } */

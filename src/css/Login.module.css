@@ -1,8 +1,8 @@
 .loginmain {
-  width: 550px;
-  height: 300px;
-  border: 2px solid rgb(219, 217, 217);
-  border-radius: 10px;
+  width: 55vw;
+  height: 30vw;
+  border: 0.2vw solid rgb(219, 217, 217);
+  border-radius: 1vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,26 +19,35 @@
     left: 50%;
     transform: translate(-50%,-50%);
 } */
+
+.login h2 {
+  font-size: 3vw;
+
+}
 .formoutline {
-  width: 510px;
+  width: 51vw;
 }
 .form input {
-  padding: 8px;
+  padding: 0.8vw;
   /* color: rgb(179, 176, 176); */
   color: black;
-  border-radius: 6px;
-  border: 1px solid #dcd8d8e8;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  border-radius: 0.6vw;
+  border: 0.1vw solid #dcd8d8e8;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
   background-color: #f4f4f4e8;
-
+  font-size: 1.5vw;
   width: 100%;
-  min-width: 100px;
+  height:4vw;
+  min-width: 10vw;
 }
 
 .form button {
-  margin-left: 440px;
-  margin-top: 15px;
+  margin-left: 41.5vw;
+  margin-top: 1.5vw;
+  font-size:1.5vw;
+  border-radius:0.5vw;
+  padding: 0.8vw;
 }
 
 /* ************************popup */
@@ -54,42 +63,42 @@
      transform: translate(-50%,-50%);
 } */
 .popup {
-  border: 2px solid rgb(219, 217, 217);
+  border: 0.2vw solid rgb(219, 217, 217);
   display: flex;
 
   align-items: center;
   justify-content: space-around;
 
-  border-radius: 10px;
+  border-radius: 1vw;
   line-height: 0.8;
-  width: 500px;
-  height: 90px;
+  width: 50vw;
+  height: 9vw;
 }
 .popup p {
-  padding-left: 10px;
-  margin-left: 10px;
-  margin-top: 12px;
+  padding-left: 1vw;
+  margin-left: 1vw;
+  margin-top: 1.2vw;
 }
 .popup button {
-  margin-left: 30px;
+  margin-left: 3vw;
 }
 
 .input {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-left: -30px;
+  margin-left: -3vw;
 }
 
 .input input {
-  padding: 5px;
+  padding: 0.5vw;
 
   color: black;
-  border-radius: 6px;
-  border: 1px solid #dcd8d8e8;
+  border-radius: 0.6vw;
+  border: 0.1vw solid #dcd8d8e8;
 
   background-color: #f4f4f4e8;
 
   width: 100%;
-  min-width: 100px;
+  min-width: 10vw;
 }

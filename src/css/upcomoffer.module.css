@@ -59,7 +59,30 @@
   
 } */
 
-
+ 
+.formInput input{
+ height:4vw;
+  border: 0.1vw solid rgb(184, 183, 183);
+  border-radius:.5vw;
+  margin-top:1vw ;
+  margin-bottom: 1vw;
+  font-size:1.5vw;
+}
+.formInput input::placeholder {
+  font-size:1.5vw;
+  position: absolute;
+   
+   padding-left: 1vw;
+   
+   
+}
+.formInput button {
+font-size: 1.5vw;
+border-radius: 0.5vw;
+padding:0.2vw;
+padding-left:0.4vw;
+padding-right: 0.4vw;
+}
 
 
 .okbutton{
@@ -68,14 +91,14 @@
    flex-direction:  column;
    align-items: center;
  
-margin-top:4px;
+margin-top:0.4vw;
  
 }
 
 .setting {
-  width: 550px;
+  width: 53.5vw;
   /* height: 220px; */
-  height: 400px;
+  height: 39.5vw;
   position: absolute;
   /* margin-top: -300px; */
   top: 50%;
@@ -83,55 +106,55 @@ margin-top:4px;
   transform: translate(-50%, -50%);
   z-index: 1;
   background-color: white;
-  border: 1px solid whitesmoke;
+   
 display: flex;
 flex-direction: column;
   
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 0.5vw;
+  box-shadow: 0 0.4vw 0.8vw 0 rgba(0, 0, 0, 0.2), 0 0.6vw 2vw 0 rgba(0, 0, 0, 0.19);
 }
 
 .settinghead h3 {
-  margin-top: 4px;
-   
-  margin-left: 15px;
+  margin-top: 0.4vw;
+   font-size: 2.5vw;
+  margin-left: 1.5vw;
 }
 
 .settinghead button{
-margin-left: 373px;
+margin-left: 37.3vw;
 
 
 }
 .settinghead svg {
    font-weight: bolder;
-   font-size: 30px;
+   font-size: 3vw;
    color: white; 
    
 }
 
 .setting p {
-  font-size: 14px;
-  margin-top: 10px;
-  margin-left: 5px;
+  font-size: 1.4vw;
+  margin-top: 1vw;
+  margin-left: 0.5vw;
 }
 
 .settinghead {
-height: 65px;
+height: 6.5vw;
   display: flex;
    background-color: #6ba613;
   /* border-bottom: 1px solid green; */
 color: white;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 0.4vw;
+  border-top-right-radius: 0.4vw;
   align-items: center;
-  border-bottom: 1px solid  whitesmoke;
-  box-shadow:0px 2px 10px rgba(0, 0, 0, 0.19); 
+  /* border-bottom: 1px solid  whitesmoke;
+  box-shadow:0px 2px 10px rgba(0, 0, 0, 0.19);  */
 }
 
 .upcometext{
-  width: 390px;
+  width: 39vw;
   /* height: 220px; */
-  height: 220px;
+  height: 22vw;
   position: absolute;
   /* margin-top: -300px; */
   top: 50%;
@@ -139,46 +162,49 @@ color: white;
   transform: translate(-50%, -50%);
   z-index: 1;
   background-color: white;
-  border: 1px solid whitesmoke;
+ 
 
-  border-radius:4px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius:0.4vw;
+  box-shadow: 0 0.4vw 0.8vw 0 rgba(0, 0, 0, 0.2), 0 0.6vw  2vw 0 rgba(0, 0, 0, 0.19);
 }
 
 .offerhead {
-   height:50px;
+   height:5vw;
   display: flex;
   justify-content: space-between;
+  
   /* border-bottom: 1px solid green; */
 background-color: #6ba613;
 color: white;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-top-left-radius: 0.4vw;
+  border-top-right-radius: 0.4vw;
   align-items: center;
-  border-bottom: 1px solid  whitesmoke;
-  box-shadow:0px 2px 10px rgba(0, 0, 0, 0.19); 
+  /* border-bottom: 1px solid  whitesmoke;
+  box-shadow:0px 2px 10px rgba(0, 0, 0, 0.19);  */
 }
 .offerhead h4 {
-  margin-left: 16px;
+  margin-left: 1.6vw;
+  font-size: 2.5vw;
+  
 }
 
 .offerhead svg {
-   font-size:28px;
+   font-size:2.8vw;
   color:white;
 }
 
 
 .imagesbutton {
   background-color:black;
-  height: 40px;
-  margin-top: 10px;
-  border-bottom: 1px solid  whitesmoke;
-  box-shadow:0px 2px 10px rgba(0, 0, 0, 0.19) ;
+  height: 4vw;
+  margin-top: 1vw;
+  border-bottom: 0.1vw solid  whitesmoke;
+  box-shadow:0px 0.2vw 1vw rgba(0, 0, 0, 0.19) ;
   
 }
 
 .imagesbutton button{
-font-size:17px;
+font-size:1.7vw;
  
  
 color: white;
@@ -191,7 +217,7 @@ color: white;
   
 
 .imglabel {
-  margin-top: -10px;
+  margin-top: -1vw;
 }
 
 /* @media screen and (max-width: 800px) {
@@ -362,7 +388,7 @@ margin-top:-5px;
 }
 */
 
-@media only screen and (max-width: 7680px) {
+/*@media only screen and (max-width: 7680px) {*/
   .main {
     background-color: #f4fbed;
     width: 63vw;
@@ -395,13 +421,13 @@ font-family: "Comic Sans MS", "Comic Sans"  ;
    
    
     color: #fff;
-      -webkit-text-stroke-width: 5px;  
-           -webkit-text-stroke: 3px #6ba613 ; 
+      -webkit-text-stroke-width: 0.5vw;  
+           -webkit-text-stroke: 0.3vw #6ba613 ; 
          /*text-shadow:9px 0 #6ba613 , -9px 0 #6ba613, 0 9px #6ba613,  0 -9px #6ba613,  
                  8px 9px #6ba613, -0px -10px #6ba613, 10px -10px #6ba613, -10px 10px #6ba613;    */   
                ;
     height: 14vh;
-    letter-spacing:-5px;
+    letter-spacing:-0.5vw;
     /* margin-left: 22vw;  */
   }
   .img {
@@ -463,18 +489,26 @@ font-family: "Comic Sans MS", "Comic Sans"  ;
 
 
   .logoutmodel{
-    width:300px;
-    height:110px;
-    border:1px solid  whitesmoke;
+    width:30vw;
+    height:11vw;
+    border:0.1vw solid  whitesmoke;
     background-color: white;
-    border-radius: 12px;
+    border-radius: 1.2vw;
     text-align: center;
-    padding:10px;
-    box-shadow:2px 2px 8px  1px rgba(0, 0, 0, 0.19);
+    padding:1vw;
+    box-shadow:0.2vw 0.2vw 0.8vw  0.1vw rgba(0, 0, 0, 0.19);
+  }
+  .logoutmodel h5{
+    font-size: 2vw;
   }
 
   .logoutmodel button {
-     margin: 10px;
+     margin: 1vw;
+     font-size:2vw;
+    padding: 0.5vw;
+
+     
+     border-radius: 0.5vw;
   }
 
-}
+/*}*/

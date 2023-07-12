@@ -871,7 +871,7 @@ border-bottom:1px solid green;
 } */
 
 /* trail */
-@media only screen and (max-width: 7680px) {
+/*@media only screen and (max-width: 7680px) {*/
   .main {
     width: 37vw;
     height: 100vh;
@@ -1035,4 +1035,4 @@ border-bottom:1px solid green;
       text-align: center;
     }
     
-}
+/*}*/
