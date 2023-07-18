@@ -392,7 +392,7 @@ function UpcomingOffer() {
         <img src={tmbillimg} alt="ico" /> 
     </div> */}
 
-          {uploadfile && (    
+        {uploadfile && (
           <div className={classes.setting}>
             <div className={classes.settinghead}>
               {/* <h4>Select Offer Images from here... </h4> */}
@@ -435,158 +435,208 @@ function UpcomingOffer() {
               </button>
             </div>
             <span className={classes.okbutton}>
-            {/* upcoming  offer card */}
-            {upcomeningoffertext && (
-              <div className={classes.upcometext}>
-                <div className={classes.offerhead}>
-                  <h4>Title</h4>
-                  <button
-                    className="btn btn-default btn-sm"
-                    onClick={() => setUpcomeningOfferText(false)}
-                  >
-                    <CloseIcon />
-                  </button>
-                </div>
-                <div>
-                  <div style={{ marginTop: "2.5vw", textAlign: "center" }}>
-                    <h6 style={{fontSize:'2vw'}} >{upcomehook}</h6>
+              {/* upcoming  offer card */}
+              {upcomeningoffertext && (
+                <div className={classes.upcometext}>
+                  <div className={classes.offerhead}>
+                    <h4>Title</h4>
+                    <button
+                      className="btn btn-default btn-sm"
+                      onClick={() => setUpcomeningOfferText(false)}
+                    >
+                      <CloseIcon />
+                    </button>
                   </div>
-                  <form onSubmit={offerSubmitHandler}>
-                   <div  className={classes.formInput}>
-                    <div className="form-group p-2">
+                  <div>
+                    <div style={{ marginTop: "2.5vw", textAlign: "center" }}>
+                      <h6 style={{ fontSize: "2vw" }}>{upcomehook}</h6>
+                    </div>
+                    <form onSubmit={offerSubmitHandler}>
+                      <div className={classes.formInput}>
+                        <div className="form-group p-2">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Title"
+                            ref={upcomeref}
+                            maxLength={16}
+                          />
+                          <button className="btn btn-dark btn-sm mt-2">
+                            Submit
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
+              {/* button settin */}
+              {/*  three image  */}
+              {threeImage && (
+                <div>
+                  <div>
+                    <p>
+                      Note :{" "}
+                      <small>
+                        You can upload an Image In JPEG, PNG ,GIF format and
+                        Fixed Aspect Ratio is 300 X 450.
+                      </small>
+                    </p>
+                  </div>
+                  <div className={classes.imglabel}>
+                    <div className="uploadimage">
+                      <section>Image - 1</section>
+                      <input id="imgs1" type="file" onChange={imageHandler1} />
+                      <label htmlFor="imgs1"> Choose File</label>
+                      <span>
+                        {localStorage.getItem("file1")
+                          ? localStorage.getItem("file1")
+                          : "offer1.jpeg"}
+                      </span>
+                      <button
+                        onClick={() => Removeshow3img1()}
+                        className="btn btn-default btn-sm"
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
+
+                    <div className="uploadimage">
+                      <section>Image - 2</section>
+                      <input id="imgs2" type="file" onChange={imageHandler2} />
+
+                      <label htmlFor="imgs2"> Choose File</label>
+                      <span>
+                        {localStorage.getItem("file2")
+                          ? localStorage.getItem("file2")
+                          : "offer2.jpeg"}
+                      </span>
+                      <button
+                        onClick={() => Removeshow3img2()}
+                        className="btn btn-default btn-sm"
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
+
+                    <div className="uploadimage">
+                      <section>Image - 3</section>
+                      <input id="imgs3" type="file" onChange={imageHandler3} />
+                      <label htmlFor="imgs3"> Choose File</label>
+                      <span>
+                        {localStorage.getItem("file3")
+                          ? localStorage.getItem("file3")
+                          : "offer3.jpeg"}
+                      </span>
+                      <button
+                        onClick={() => Removeshow3img3()}
+                        className="btn btn-default btn-sm"
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {/* 8888 tow image  */}
+
+              {twoImage && (
+                <div>
+                  <div>
+                    <p>
+                      Note :{" "}
+                      <small>
+                        You can upload an Image In JPEG, PNG ,GIF format and
+                        Fixed Aspect Ratio is 500 X 400.
+                      </small>
+                    </p>
+                  </div>
+                  <div className={classes.imglabel}>
+                    <div className="uploadimage" style={{ marginTop: "3vw" }}>
+                      <section>Image - 1</section>
                       <input
-                        type="text"
-                        className="form-control"
-                        placeholder="title"
-                        ref={upcomeref}
-                        maxLength={16}
+                        id="doubleone"
+                        type="file"
+                        onChange={doubleimgone}
                       />
-                      <button className="btn btn-dark btn-sm mt-2">
-                        Submit
-                      </button>
+                      <label htmlFor="doubleone"> Choose File</label>
+                      <span>
+                        {localStorage.getItem("doublenameone")
+                          ? localStorage.getItem("doublenameone")
+                          : "offer1.jpeg"}
+                      </span>
+                      <div>
+                        <button
+                          onClick={() => Removeshow2img1()}
+                          className="btn btn-default btn-sm"
+                        >
+                          <DeleteIcon />
+                        </button>
+                      </div>
                     </div>
+
+                    <div
+                      className="uploadimage"
+                      style={{ marginTop: "1.8vw", marginBottom: "1.5vw" }}
+                    >
+                      <section>Image - 2</section>
+                      <input
+                        id="doubletwo"
+                        type="file"
+                        onChange={doubleimgtwo}
+                      />
+
+                      <label htmlFor="doubletwo"> Choose File</label>
+                      <span>
+                        {localStorage.getItem("doublenametwo")
+                          ? localStorage.getItem("doublenametwo")
+                          : "offer2.jpeg"}
+                      </span>
+                      <div>
+                        <button
+                          onClick={() => Removeshow2img2()}
+                          className="btn btn-default btn-sm"
+                        >
+                          <DeleteIcon />
+                        </button>
+                      </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
-              </div>
-            )}
-            {/* button settin */}
-            {/*  three image  */}
-            {threeImage && (
-              <div>
+              )}
+
+              {/*  one imge */}
+
+              {OneImage && (
                 <div>
-                  <p>
-                    Note :{" "}
-                    <small>
-                      You can upload an Image In JPEG, PNG ,GIF format and Fixed
-                      Aspect Ratio is 300 X 450.
-                    </small>
-                  </p>
-                </div>
-                <div className={classes.imglabel}>
-                  <div className="uploadimage">
-                    <section>Image - 1</section>
-                    <input id="imgs1" type="file" onChange={imageHandler1} />
-                    <label htmlFor="imgs1"> Choose File</label>
-                    <span>
-                      {localStorage.getItem("file1")
-                        ? localStorage.getItem("file1")
-                        : "offer1.jpeg"}
-                    </span>
-                    <button
-                      onClick={() => Removeshow3img1()}
-                      className="btn btn-default btn-sm"
-                    >
-                      <DeleteIcon />
-                    </button>
+                  <div>
+                    <p>
+                      Note :{" "}
+                      <small>
+                        You can upload an Image In JPEG, PNG ,GIF format and
+                        Fixed Aspect Ratio is 700 X 450.
+                      </small>
+                    </p>
                   </div>
-
-                  <div className="uploadimage">
-                    <section>Image - 2</section>
-                    <input id="imgs2" type="file" onChange={imageHandler2} />
-
-                    <label htmlFor="imgs2"> Choose File</label>
-                    <span>
-                      {localStorage.getItem("file2")
-                        ? localStorage.getItem("file2")
-                        : "offer2.jpeg"}
-                    </span>
-                    <button
-                      onClick={() => Removeshow3img2()}
-                      className="btn btn-default btn-sm"
+                  <div className={classes.imglabel}>
+                    <div
+                      className="uploadimage"
+                      style={{ marginTop: "3.5vw", marginBottom: "6vw" }}
                     >
-                      <DeleteIcon />
-                    </button>
-                  </div>
-
-                  <div className="uploadimage">
-                    <section>Image - 3</section>
-                    <input id="imgs3" type="file" onChange={imageHandler3} />
-                    <label htmlFor="imgs3"> Choose File</label>
-                    <span>
-                      {localStorage.getItem("file3")
-                        ? localStorage.getItem("file3")
-                        : "offer3.jpeg"}
-                    </span>
-                    <button
-                      onClick={() => Removeshow3img3()}
-                      className="btn btn-default btn-sm"
-                    >
-                      <DeleteIcon />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-            {/* 8888 tow image  */}
-
-            {twoImage && (
-              <div>
-                <div>
-                  <p>
-                    Note :{" "}
-                    <small>
-                      You can upload an Image In JPEG, PNG ,GIF format and Fixed
-                      Aspect Ratio is 500 X 400.
-                    </small>
-                  </p>
-                </div>
-                <div className={classes.imglabel}>
-                  <div className="uploadimage" style={{ marginTop: "3vw" }}>
-                    <section>Image - 1</section>
-                    <input id="doubleone" type="file" onChange={doubleimgone} />
-                    <label htmlFor="doubleone"> Choose File</label>
-                    <span>
-                      {localStorage.getItem("doublenameone")
-                        ? localStorage.getItem("doublenameone")
-                        : "offer1.jpeg"}
-                    </span>
-                    <div>
+                      <section>Image - 1</section>
+                      <input
+                        id="singleone"
+                        type="file"
+                        onChange={singleImageone}
+                      />
+                      <label htmlFor="singleone"> Choose File</label>
+                      <span>
+                        {localStorage.getItem("Singlenameone")
+                          ? localStorage.getItem("Singlenameone")
+                          : "offer1.jpeg"}
+                      </span>
                       <button
-                        onClick={() => Removeshow2img1()}
-                        className="btn btn-default btn-sm"
-                      >
-                        <DeleteIcon />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div
-                    className="uploadimage"
-                    style={{ marginTop: "1.8vw", marginBottom: "1.5vw" }}
-                  >
-                    <section>Image - 2</section>
-                    <input id="doubletwo" type="file" onChange={doubleimgtwo} />
-
-                    <label htmlFor="doubletwo"> Choose File</label>
-                    <span>
-                      {localStorage.getItem("doublenametwo")
-                        ? localStorage.getItem("doublenametwo")
-                        : "offer2.jpeg"}
-                    </span>
-                    <div>
-                      <button
-                        onClick={() => Removeshow2img2()}
+                        onClick={() => Removeshow1img1()}
                         className="btn btn-default btn-sm"
                       >
                         <DeleteIcon />
@@ -594,53 +644,16 @@ function UpcomingOffer() {
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            {/*  one imge */}
+              {/* last imga  */}
 
-            {OneImage && (
-              <div>
-                <div>
-                  <p>
-                    Note :{" "}
-                    <small>
-                      You can upload an Image In JPEG, PNG ,GIF format and Fixed
-                      Aspect Ratio is 700 X 450.
-                    </small>
-                  </p>
-                </div>
-                <div className={classes.imglabel}>
-                  <div
-                    className="uploadimage"
-                    style={{ marginTop: "3.5vw", marginBottom: "6vw" }}
-                  >
-                    <section>Image - 1</section>
-                    <input
-                      id="singleone"
-                      type="file"
-                      onChange={singleImageone}
-                    />
-                    <label htmlFor="singleone"> Choose File</label>
-                    <span>
-                      {localStorage.getItem("Singlenameone")
-                        ? localStorage.getItem("Singlenameone")
-                        : "offer1.jpeg"}
-                    </span>
-                    <button
-                      onClick={() => Removeshow1img1()}
-                      className="btn btn-default btn-sm"
-                    >
-                      <DeleteIcon />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* last imga  */}
-             
-              <button  style={{fontSize:"1.5vw",padding:"0.5vw",borderRadius:'0.4vw'}}
+              <button
+                style={{
+                  fontSize: "1.5vw",
+                  padding: "0.5vw",
+                  borderRadius: "0.4vw",
+                }}
                 className="btn btn-dark btn-sm"
                 onClick={settingpopupClosHanlder}
               >
@@ -648,7 +661,7 @@ function UpcomingOffer() {
               </button>
             </span>
           </div>
-         )}  
+        )}
 
         <div className="bottomline"> </div>
 

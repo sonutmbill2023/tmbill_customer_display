@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 function LoginPage(props) {
   const history = useHistory();
 
@@ -31,7 +32,7 @@ function LoginPage(props) {
 
   const submithandler = async (e) => {
     e.preventDefault();
-     
+
     const popinput = popref.current.value;
 
     setTakepopinput(popinput);
@@ -40,21 +41,22 @@ function LoginPage(props) {
     const passadd = passwordref.current.value;
     console.log(useradd, passadd);
     await axios
-      .post(`http://${ipAdd}:3000/login`, {
-        username: userName,
-        password: Password,
-      },{ timeout: 300 })
+      .post(
+        `http://${ipAdd}:3000/login`,
+        {
+          username: userName,
+          password: Password,
+        },
+        { timeout: 1000 }
+      )
       .then((res) => {
-        console.log("result::", res.data,'from loginpage response');
+        console.log("result::", res.data, "from loginpage response");
         props.getTokenHandler(res.data.token, ipAdd);
 
         if (res.data.message == "Success") {
           history.push("/CustomerPage");
         }
         toast(res.data.message);
-
-         
-
       })
       .catch((error) => {
         console.log(error, "from error");
@@ -62,7 +64,6 @@ function LoginPage(props) {
           toast("Please enter  correct IP Address...");
         }
       });
-      
   };
 
   return (
@@ -71,7 +72,7 @@ function LoginPage(props) {
         <div className={classes.login}>
           <div>
             <div>
-              <h2>Foodies-World</h2> 
+              <h2>Customer Display</h2>
             </div>
             <div className={classes.formoutline}>
               <form onSubmit={submithandler}>
