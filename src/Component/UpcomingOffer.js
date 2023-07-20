@@ -190,23 +190,8 @@ function UpcomingOffer() {
   /*logout confirmation */
   const logout = () => {
     new Audio(sound).play();
-    // confirmAlert({
-    //   message: "Do you really want to exit?",
-    //   buttons: [
-    //     {
-    //       label: "Yes",
-    //       onClick: () => {
-    //         history.push("/Loginpage");
-    //       },
-    //     },
-    //     {
-    //       label: "No",
-    //       onClick: () => {
-    //         return;
-    //       },
-    //     },
-    //   ],
-    // });
+    
+   
 
     confirmAlert({
       customUI: ({ onClose }) => {
@@ -278,7 +263,7 @@ function UpcomingOffer() {
     const upcomeinput = upcomeref.current.value;
     localStorage.setItem("upcomeinput", upcomeinput);
     setupcomehook(upcomeinput);
-    console.log(upcomeinput);
+   // console.log(upcomeinput);
 
     toast("Title Updated Successfully");
   };

@@ -28,7 +28,7 @@ function LoginPage(props) {
   const ipAddHandler = (e) => {
     setIpAdd(e.target.value);
   };
-  console.log(userName, Password, ipAdd);
+  //console.log(userName, Password, ipAdd);
 
   const submithandler = async (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ function LoginPage(props) {
 
     const useradd = usernameref.current.value;
     const passadd = passwordref.current.value;
-    console.log(useradd, passadd);
+    //console.log(useradd, passadd);
     await axios
       .post(
         `http://${ipAdd}:3000/login`,
@@ -50,7 +50,7 @@ function LoginPage(props) {
         { timeout: 1000 }
       )
       .then((res) => {
-        console.log("result::", res.data, "from loginpage response");
+        //console.log("result::", res.data, "from loginpage response");
         props.getTokenHandler(res.data.token, ipAdd);
 
         if (res.data.message == "Success") {
@@ -59,7 +59,7 @@ function LoginPage(props) {
         toast(res.data.message);
       })
       .catch((error) => {
-        console.log(error, "from error");
+        //console.log(error, "from error");
         if (error) {
           toast("Please enter  correct IP Address...");
         }

@@ -10,23 +10,26 @@ import axios from "axios";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 function CustomerPage(props) {
   const [tableData, setTableData] = useState([]);
-  const [DinepaymentRecieved, setDinePaymentRecieved] = useState([]);
-  const [qrsrc, setQrSrc] = useState(QRCode);
+  const [dinepaymentRecieved, setdinePaymentRecieved] = useState([]);
+  const [paymentIsPaid, setPaymentIsPaid] = useState(false);
+  const [qrsrc, setQrSrc] = useState(null);
   const [QrsrcQuickbill, setQrSrcquickbill] = useState("");
   const [quickBill, setQuickBill] = useState([]);
   const [dineinTotalAmount, setDineInTotalAmount] = useState(null);
   const [bharatPayField2, setBharatPayField2] = useState(null);
   const [showResult, setShowResult] = useState(true);
+  const [kotupdate,setkoteupdate] = useState('')
+  const [kotsaved,setkotsaved] = useState('')
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
-  console.log(props.ipadd, "from customer display");
+  //console.log(props.ipadd, "from customer display");
 
   useEffect(() => {
     socket.on("quick-bill-placed", (data) => {
       setQuickBill(data);
-      // setQuickBillItems(  data )
+
       setTableData("");
-      setDinePaymentRecieved("");
-      console.log(data, "form quickbill");
+      setdinePaymentRecieved("");
+      //console.log(data, "form quickbill");
       setDineInTotalAmount("");
     });
   }, []);
@@ -35,6 +38,9 @@ function CustomerPage(props) {
     socket.on("kot-saved", (data) => {
       const newdata = JSON.parse(data);
       console.log(newdata);
+      setkotsaved(data)
+      setPaymentIsPaid(false);
+      setdinePaymentRecieved('')
     });
   }, []);
 
@@ -42,15 +48,59 @@ function CustomerPage(props) {
     socket.on("bill-settled", (data) => {
       setTableData("");
       setDineInTotalAmount("");
-      setDinePaymentRecieved("");
+      setdinePaymentRecieved("");
+       
     });
   }, []);
 
   useEffect(() => {
     socket.on("payment-received", (data) => {
-      setDinePaymentRecieved(data);
+      setdinePaymentRecieved(data);
+      console.log(data, "from pyment recieved");
+      setQrSrc(null);
+      setDineInTotalAmount("");
     });
-  });
+  }, []);
+
+  function paymentFunHandler() {
+    let data = {
+      msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
+      store_id: "81222989115777",
+      flag: 103,
+      order: {
+        store_id: "81222989115777",
+        custom_bill_number: "SK20220000008",
+        bill_number: 8,
+        payment: {
+          npciTrxnId: "6876840758",
+          isstaticScan: false,
+          amount: "3.00",
+          cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
+          type: "",
+          cust_phone: "",
+          trxn_id: "6876840758",
+        },
+        table_id: 67599,
+        order_id: "xd7oEIigj5XSXV9668",
+      },
+      tableIdToSettle: {
+        table_id: 67599,
+        table_name: "AC1",
+      },
+    };
+    setdinePaymentRecieved(data);
+    console.log(data?.order?.table_id, "form payment recie table id");
+  }
+  useEffect(() => {
+    socket.on("kot-updated", (data) => {
+      setDineInTotalAmount("");
+        
+      setPaymentIsPaid(false);
+      setdinePaymentRecieved('')
+       setkoteupdate(data)
+      console.log(data, "from kot updated");
+    });
+  }, []);
 
   useEffect(() => {
     socket.on("table-clicked", async (data) => {
@@ -65,46 +115,64 @@ function CustomerPage(props) {
             }
           )
           .then((res) => {
-            setTableData(res.data.orderdata);
+            setTableData(res?.data?.orderdata);
 
             setBharatPayField2(
               res?.data?.orderdata?.billDetails?.field2?.toString()
             );
 
             console.log(res.data, "from table-clicked");
-            setDinePaymentRecieved("");
 
+            //setdinePaymentRecieved("");
+             
             setQuickBill("");
             setShowResult(!showResult);
           });
       } catch (err) {
         console.log("err:", err);
       }
+
       setDineInTotalAmount(data.order_total);
+    
+      
+    
       console.log(data, "fromdinetotal");
     });
   }, []);
+  console.log(paymentIsPaid, "from customer");
+
+  //payment state
+  
+  useEffect(()=>{
+    console.log(tableData?.table_id, "form table click table id ");
+  console.log(dinepaymentRecieved?.order?.table_id, "form payment table");
+
+    if (tableData?.table_id ===  dinepaymentRecieved?.order?.table_id?.toString()) {
+   
+ 
+  setPaymentIsPaid(true);
+  } else {
+    setPaymentIsPaid(false);
+  }
+  },[tableData,dinepaymentRecieved,kotupdate,kotsaved])
+
 
   useEffect(() => {
     const qrcodegenrateFunction = () => {
       try {
         QRCode.toDataURL(`${bharatPayField2}`).then((res) => {
-          if (tableData?.billDetails?.field2){
+          if (tableData?.billDetails?.field2) {
             setQrSrc(res);
-          } else {
-            setQrSrc(Qrimg);
           }
 
           setShowResult(false);
         });
       } catch (err) {
-        // await QRCode.toDataURL(`${tableData?.billDetails?.field2?.toString()}`)
         console.log(err);
       }
     };
 
     qrcodegenrateFunction();
-    console.log(qrsrc);
   }, [tableData?.billDetails?.field2]);
 
   useEffect(() => {
@@ -116,11 +184,13 @@ function CustomerPage(props) {
         console.log(err);
       });
   }, [quickBill]);
+  console.log(quickBill, "from customerpage");
 
   return (
     <div style={{ display: "flex" }}>
       <UpcomingOffer />
       <div className={classes.main}>
+        <button onClick={() => paymentFunHandler()} >payment recieved</button>  
         <div className={classes.header}>
           <h4>
             BILL NUMBER: {tableData.order_id > 0 ? tableData.order_id : null}
@@ -198,13 +268,13 @@ function CustomerPage(props) {
             </table>
           </div>
         </div>
-        {DinepaymentRecieved?.msg ? (
+        {dinepaymentRecieved?.msg && paymentIsPaid ? (
           <div className={classes.paymentRecieved}>
             <CheckCircleIcon />
             <h6>Payment Successful!</h6>
             <p>Thank you! Your payment is complete</p>
           </div>
-        ) : dineinTotalAmount ||
+        ) : (dineinTotalAmount && tableData?.billItems) ||
           tableData?.billDetails ||
           quickBill?.order_total ? (
           <div className={classes.footer}>
@@ -230,25 +300,12 @@ function CustomerPage(props) {
             </div>
             <div className={classes.pay}>
               {(tableData?.billDetails?.order_total == dineinTotalAmount &&
-              tableData?.billDetails?.field2 !== null ? (
-                <span>
-                  {" "}
-                  <h6>SCAN TO PAY</h6> <img src={qrsrc} alt="qr" />
-                </span>
-              ) : (
-                <p
-                  style={{
-                    textAlign: "center",
-                    fontSize: "1.2vw",
-                    textAlign: "center",
-                    marginTop: " 12vh",
-                    marginLeft: "2vw",
-                  }}
-                >
-                  {" "}
-                  Generating QR code...
-                </p>
-              )) ||
+                tableData?.billDetails?.field2 !== null && (
+                  <span>
+                    {" "}
+                    <h6>SCAN TO PAY</h6> <img src={qrsrc} alt="qr" />
+                  </span>
+                )) ||
                 (quickBill?.Payment_qr && (
                   <span>
                     {" "}
