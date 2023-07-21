@@ -18,8 +18,9 @@ function CustomerPage(props) {
   const [dineinTotalAmount, setDineInTotalAmount] = useState(null);
   const [bharatPayField2, setBharatPayField2] = useState(null);
   const [showResult, setShowResult] = useState(true);
-  const [kotupdate,setkoteupdate] = useState('')
-  const [kotsaved,setkotsaved] = useState('')
+  const [kotupdate, setkoteupdate] = useState("");
+  const [kotsaved, setkotsaved] = useState("");
+  const [billsettled,setbillSettled] = useState("")
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
   //console.log(props.ipadd, "from customer display");
 
@@ -37,32 +38,72 @@ function CustomerPage(props) {
   useEffect(() => {
     socket.on("kot-saved", (data) => {
       const newdata = JSON.parse(data);
-      console.log(newdata);
-      setkotsaved(data)
-      setPaymentIsPaid(false);
-      setdinePaymentRecieved('')
+       
+      setkotsaved(newdata);
     });
   }, []);
 
   useEffect(() => {
-    socket.on("bill-settled", (data) => {
-      setTableData("");
-      setDineInTotalAmount("");
-      setdinePaymentRecieved("");
+    if (
+      kotsaved?.table_id == dinepaymentRecieved?.order?.table_id?.toString()
+    ) {
+      setPaymentIsPaid(false);
+       setdinePaymentRecieved("");
+    }
+  }, [kotsaved]);
+
+  useEffect(() => {
+    socket.on("kot-updated", (data) => {
+      let newData = JSON.parse(data);
        
+
+      setkoteupdate(newData);
+      //console.log(newData, "from kot updated");
     });
   }, []);
+
+  useEffect(() => {
+   
+    if (
+      kotupdate?.table_id == dinepaymentRecieved?.order?.table_id?.toString()
+    ) {
+      setPaymentIsPaid(false);
+       setdinePaymentRecieved("");
+    }
+  }, [kotupdate]);
+
+  useEffect(() => {
+    socket.on("bill-settled", (data) => {
+      const newdata  = JSON.parse(data)
+      setbillSettled(newdata)
+      setTableData("");
+      setDineInTotalAmount("");
+       
+     console.log(newdata,'bill settled')
+    });
+  }, []);
+
+  useEffect(()=>{
+    if (
+      billsettled?.table_id == dinepaymentRecieved?.order?.table_id?.toString()
+    ) {
+      setPaymentIsPaid(false);
+        setdinePaymentRecieved("");
+        
+    }
+  },[billsettled])
 
   useEffect(() => {
     socket.on("payment-received", (data) => {
       setdinePaymentRecieved(data);
       console.log(data, "from pyment recieved");
-      setQrSrc(null);
-      setDineInTotalAmount("");
+      // setQrSrc(null);
+      // setDineInTotalAmount("");
     });
   }, []);
 
-  function paymentFunHandler() {
+  //payment1
+  function paymentFunHandler1() {
     let data = {
       msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
       store_id: "81222989115777",
@@ -91,17 +132,65 @@ function CustomerPage(props) {
     setdinePaymentRecieved(data);
     console.log(data?.order?.table_id, "form payment recie table id");
   }
-  useEffect(() => {
-    socket.on("kot-updated", (data) => {
-      setDineInTotalAmount("");
-        
-      setPaymentIsPaid(false);
-      setdinePaymentRecieved('')
-       setkoteupdate(data)
-      console.log(data, "from kot updated");
-    });
-  }, []);
-
+  function paymentFunHandler2() {
+    let data = {
+      msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
+      store_id: "81222989115777",
+      flag: 103,
+      order: {
+        store_id: "81222989115777",
+        custom_bill_number: "SK20220000008",
+        bill_number: 8,
+        payment: {
+          npciTrxnId: "6876840758",
+          isstaticScan: false,
+          amount: "3.00",
+          cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
+          type: "",
+          cust_phone: "",
+          trxn_id: "6876840758",
+        },
+        table_id:  72567,
+        order_id: "xd7oEIigj5XSXV9668",
+      },
+      tableIdToSettle: {
+        table_id: 72567,
+        table_name: "AC1",
+      },
+    };
+    setdinePaymentRecieved(data);
+    console.log(data?.order?.table_id, "form payment recie table id");
+  }
+  function paymentFunHandler3() {
+    let data = {
+      msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
+      store_id: "81222989115777",
+      flag: 103,
+      order: {
+        store_id: "81222989115777",
+        custom_bill_number: "SK20220000008",
+        bill_number: 8,
+        payment: {
+          npciTrxnId: "6876840758",
+          isstaticScan: false,
+          amount: "3.00",
+          cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
+          type: "",
+          cust_phone: "",
+          trxn_id: "6876840758",
+        },
+        table_id: 90255,
+        order_id: "xd7oEIigj5XSXV9668",
+      },
+      tableIdToSettle: {
+        table_id:90255,
+        table_name: "AC1",
+      },
+    };
+    setdinePaymentRecieved(data);
+    console.log(data?.order?.table_id, "form payment recie table id");
+  }
+// payment end
   useEffect(() => {
     socket.on("table-clicked", async (data) => {
       try {
@@ -124,7 +213,7 @@ function CustomerPage(props) {
             console.log(res.data, "from table-clicked");
 
             //setdinePaymentRecieved("");
-             
+
             setQuickBill("");
             setShowResult(!showResult);
           });
@@ -133,29 +222,25 @@ function CustomerPage(props) {
       }
 
       setDineInTotalAmount(data.order_total);
-    
-      
-    
+
       console.log(data, "fromdinetotal");
     });
   }, []);
   console.log(paymentIsPaid, "from customer");
 
   //payment state
-  
-  useEffect(()=>{
-    console.log(tableData?.table_id, "form table click table id ");
-  console.log(dinepaymentRecieved?.order?.table_id, "form payment table");
 
-    if (tableData?.table_id ===  dinepaymentRecieved?.order?.table_id?.toString()) {
-   
- 
-  setPaymentIsPaid(true);
-  } else {
-    setPaymentIsPaid(false);
-  }
-  },[tableData,dinepaymentRecieved,kotupdate,kotsaved])
+  useEffect(() => {
+     
 
+    if (
+      tableData?.table_id === dinepaymentRecieved?.order?.table_id?.toString()
+    ) {
+      setPaymentIsPaid(true);
+    } else {
+      setPaymentIsPaid(false);
+    }
+  }, [tableData, dinepaymentRecieved]);
 
   useEffect(() => {
     const qrcodegenrateFunction = () => {
@@ -190,7 +275,9 @@ function CustomerPage(props) {
     <div style={{ display: "flex" }}>
       <UpcomingOffer />
       <div className={classes.main}>
-        <button onClick={() => paymentFunHandler()} >payment recieved</button>  
+         <button onClick={() => paymentFunHandler1()}>1</button> 
+         <button onClick={() => paymentFunHandler2()}>2</button> 
+         <button onClick={() => paymentFunHandler3()}>3</button>   
         <div className={classes.header}>
           <h4>
             BILL NUMBER: {tableData.order_id > 0 ? tableData.order_id : null}
