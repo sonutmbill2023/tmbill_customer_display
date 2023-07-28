@@ -202,6 +202,7 @@ function UpcomingOffer() {
               className="btn btn-dark btn-sm"
               onClick={() => {
                 history.push("/Loginpage");
+                localStorage.removeItem('token')
                 onClose();
               }}
             >

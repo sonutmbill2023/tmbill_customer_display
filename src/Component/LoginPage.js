@@ -51,8 +51,10 @@ function LoginPage(props) {
       )
       .then((res) => {
         //console.log("result::", res.data, "from loginpage response");
-        props.getTokenHandler(res.data.token, ipAdd);
-
+        props.getTokenHandler(res.data.token , ipAdd);
+         
+        localStorage.setItem('ipAdd',ipAdd)
+        localStorage.setItem("token",res.data.token)
         if (res.data.message == "Success") {
           history.push("/CustomerPage");
         }

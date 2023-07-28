@@ -24,7 +24,9 @@ function CustomerPage(props) {
   const [paymentobjtable, setpaymentobjtable] = useState([]);
   const [paymentobjrecieve, setpaymentobjrecieve] = useState([]);
   let payobj = {};
-  const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
+  let tokenlocal = localStorage.getItem("token")
+  let ipadd = localStorage.getItem('ipAdd')
+  const socket = io.connect(`http://${ipadd}:3000/?token=${tokenlocal}`);
   //console.log(props.ipadd, "from customer display");
 
   useEffect(() => {

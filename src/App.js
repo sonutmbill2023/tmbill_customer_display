@@ -14,6 +14,7 @@ function App() {
     setipadd(ipaddress);
     console.log(ipaddress, "from app component");
   };
+  let tokenstorage = localStorage.getItem('token')
   return (
     <div className="app">
       <Switch>
@@ -21,7 +22,7 @@ function App() {
           <LoginPage getTokenHandler={getTokenHandler} />
         </Route>
         <Route path="/CustomerPage">
-          <CustomerPage token={token} ipadd={ipadd} />
+          {tokenstorage && <CustomerPage token={token} ipadd={ipadd} />}
         </Route>
         <Route path="*">
           <Redirect to="/Loginpage" />
