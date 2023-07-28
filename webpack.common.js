@@ -44,6 +44,7 @@ module.exports = {
         test: /\.(mp3|wav)$/,
         loader: "file-loader",
       },
+      
     ],
   },
   resolve: {
