@@ -197,7 +197,7 @@ function UpcomingOffer() {
       customUI: ({ onClose }) => {
         return (
           <div className={classes.logoutmodel}>
-            <h5>Do you really want to exit?</h5>
+            <h5>Do you really want to Logout?</h5>
             <button
               className="btn btn-dark btn-sm"
               onClick={() => {

@@ -20,7 +20,10 @@ function CustomerPage(props) {
   const [showResult, setShowResult] = useState(true);
   const [kotupdate, setkoteupdate] = useState("");
   const [kotsaved, setkotsaved] = useState("");
-  const [billsettled,setbillSettled] = useState("")
+  const [billsettled, setbillSettled] = useState("");
+  const [paymentobjtable, setpaymentobjtable] = useState([]);
+  const [paymentobjrecieve, setpaymentobjrecieve] = useState([]);
+  let payobj = {};
   const socket = io.connect(`http://${props.ipadd}:3000/?token=${props.token}`);
   //console.log(props.ipadd, "from customer display");
 
@@ -38,24 +41,16 @@ function CustomerPage(props) {
   useEffect(() => {
     socket.on("kot-saved", (data) => {
       const newdata = JSON.parse(data);
-       
+
       setkotsaved(newdata);
     });
   }, []);
 
-  useEffect(() => {
-    if (
-      kotsaved?.table_id == dinepaymentRecieved?.order?.table_id?.toString()
-    ) {
-      setPaymentIsPaid(false);
-       setdinePaymentRecieved("");
-    }
-  }, [kotsaved]);
+  
 
   useEffect(() => {
     socket.on("kot-updated", (data) => {
       let newData = JSON.parse(data);
-       
 
       setkoteupdate(newData);
       //console.log(newData, "from kot updated");
@@ -63,39 +58,43 @@ function CustomerPage(props) {
   }, []);
 
   useEffect(() => {
-   
-    if (
-      kotupdate?.table_id == dinepaymentRecieved?.order?.table_id?.toString()
-    ) {
-      setPaymentIsPaid(false);
-       setdinePaymentRecieved("");
+    for (let key in payobj) {
+      if (key == kotupdate?.table_id ||key == kotsaved?.table_id ) {
+        setPaymentIsPaid(false);
+      }
     }
-  }, [kotupdate]);
+
+    const temp = [...dinepaymentRecieved];
+    temp.forEach((item, index) => {
+      if (kotupdate?.table_id == item?.order?.table_id || kotsaved?.table_id==item?.order?.table_id) {
+        temp.splice(index, 1);
+      }
+    });
+    setdinePaymentRecieved(temp);
+  }, [kotupdate,kotsaved]);
 
   useEffect(() => {
     socket.on("bill-settled", (data) => {
-      const newdata  = JSON.parse(data)
-      setbillSettled(newdata)
+      const newdata = JSON.parse(data);
+      setbillSettled(newdata);
       setTableData("");
       setDineInTotalAmount("");
-       
-     console.log(newdata,'bill settled')
+
+      console.log(newdata, "bill settled");
     });
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (
       billsettled?.table_id == dinepaymentRecieved?.order?.table_id?.toString()
     ) {
       setPaymentIsPaid(false);
-        setdinePaymentRecieved("");
-        
     }
-  },[billsettled])
+  }, [billsettled]);
 
   useEffect(() => {
     socket.on("payment-received", (data) => {
-      setdinePaymentRecieved(data);
+      setdinePaymentRecieved([...dinepaymentRecieved, data]);
       console.log(data, "from pyment recieved");
       // setQrSrc(null);
       // setDineInTotalAmount("");
@@ -103,94 +102,94 @@ function CustomerPage(props) {
   }, []);
 
   //payment1
-  function paymentFunHandler1() {
-    let data = {
-      msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
-      store_id: "81222989115777",
-      flag: 103,
-      order: {
-        store_id: "81222989115777",
-        custom_bill_number: "SK20220000008",
-        bill_number: 8,
-        payment: {
-          npciTrxnId: "6876840758",
-          isstaticScan: false,
-          amount: "3.00",
-          cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
-          type: "",
-          cust_phone: "",
-          trxn_id: "6876840758",
-        },
-        table_id: 67599,
-        order_id: "xd7oEIigj5XSXV9668",
-      },
-      tableIdToSettle: {
-        table_id: 67599,
-        table_name: "AC1",
-      },
-    };
-    setdinePaymentRecieved(data);
-    console.log(data?.order?.table_id, "form payment recie table id");
-  }
-  function paymentFunHandler2() {
-    let data = {
-      msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
-      store_id: "81222989115777",
-      flag: 103,
-      order: {
-        store_id: "81222989115777",
-        custom_bill_number: "SK20220000008",
-        bill_number: 8,
-        payment: {
-          npciTrxnId: "6876840758",
-          isstaticScan: false,
-          amount: "3.00",
-          cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
-          type: "",
-          cust_phone: "",
-          trxn_id: "6876840758",
-        },
-        table_id:  72567,
-        order_id: "xd7oEIigj5XSXV9668",
-      },
-      tableIdToSettle: {
-        table_id: 72567,
-        table_name: "AC1",
-      },
-    };
-    setdinePaymentRecieved(data);
-    console.log(data?.order?.table_id, "form payment recie table id");
-  }
-  function paymentFunHandler3() {
-    let data = {
-      msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
-      store_id: "81222989115777",
-      flag: 103,
-      order: {
-        store_id: "81222989115777",
-        custom_bill_number: "SK20220000008",
-        bill_number: 8,
-        payment: {
-          npciTrxnId: "6876840758",
-          isstaticScan: false,
-          amount: "3.00",
-          cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
-          type: "",
-          cust_phone: "",
-          trxn_id: "6876840758",
-        },
-        table_id: 90255,
-        order_id: "xd7oEIigj5XSXV9668",
-      },
-      tableIdToSettle: {
-        table_id:90255,
-        table_name: "AC1",
-      },
-    };
-    setdinePaymentRecieved(data);
-    console.log(data?.order?.table_id, "form payment recie table id");
-  }
-// payment end
+  // function paymentFunHandler1() {
+  //   let data = {
+  //     msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
+  //     store_id: "81222989115777",
+  //     flag: 103,
+  //     order: {
+  //       store_id: "81222989115777",
+  //       custom_bill_number: "SK20220000003",
+  //       bill_number: 8,
+  //       payment: {
+  //         npciTrxnId: "6876840758",
+  //         isstaticScan: false,
+  //         amount: "3.00",
+  //         cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
+  //         type: "",
+  //         cust_phone: "",
+  //         trxn_id: "6876840758",
+  //       },
+  //       table_id: 67599,
+  //       order_id: "xd7oEIigj5XSXV9668",
+  //     },
+  //     tableIdToSettle: {
+  //       table_id: 67599,
+  //       table_name: "AC1",
+  //     },
+  //   };
+  //   setdinePaymentRecieved([...dinepaymentRecieved, data]);
+  //   console.log(data?.order?.table_id, "form payment recie table id");
+  // }
+  // function paymentFunHandler2() {
+  //   let data = {
+  //     msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
+  //     store_id: "81222989115777",
+  //     flag: 103,
+  //     order: {
+  //       store_id: "81222989115777",
+  //       custom_bill_number: "SK20220000004",
+  //       bill_number: 8,
+  //       payment: {
+  //         npciTrxnId: "6876840758",
+  //         isstaticScan: false,
+  //         amount: "3.00",
+  //         cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
+  //         type: "",
+  //         cust_phone: "",
+  //         trxn_id: "6876840758",
+  //       },
+  //       table_id: 72567,
+  //       order_id: "xd7oEIigj5XSXV9668",
+  //     },
+  //     tableIdToSettle: {
+  //       table_id: 72567,
+  //       table_name: "AC1",
+  //     },
+  //   };
+  //   setdinePaymentRecieved([...dinepaymentRecieved, data]);
+  //   console.log(data?.order?.table_id, "form payment recie table id");
+  // }
+  // function paymentFunHandler3() {
+  //   let data = {
+  //     msg: 'Order Payment Received For OrderID="xd7oEIigj5XSXV9668"',
+  //     store_id: "81222989115777",
+  //     flag: 103,
+  //     order: {
+  //       store_id: "81222989115777",
+  //       custom_bill_number: "SK20220000005",
+  //       bill_number: 8,
+  //       payment: {
+  //         npciTrxnId: "6876840758",
+  //         isstaticScan: false,
+  //         amount: "3.00",
+  //         cust_name: "SONU KUSHWAHA SO RAJU KUSHWAHA",
+  //         type: "",
+  //         cust_phone: "",
+  //         trxn_id: "6876840758",
+  //       },
+  //       table_id: 90255,
+  //       order_id: "xd7oEIigj5XSXV9668",
+  //     },
+  //     tableIdToSettle: {
+  //       table_id: 90255,
+  //       table_name: "AC1",
+  //     },
+  //   };
+  //   setdinePaymentRecieved([...dinepaymentRecieved, data]);
+  //   console.log(data?.order?.table_id, "form payment recie table id");
+  // }
+  // payment end
   useEffect(() => {
     socket.on("table-clicked", async (data) => {
       try {
@@ -227,21 +226,94 @@ function CustomerPage(props) {
     });
   }, []);
   console.log(paymentIsPaid, "from customer");
-
+  console.log(dinepaymentRecieved, "dine payment recieved");
   //payment state
 
-  useEffect(() => {
-     
+  // useEffect(() => {
 
-    if (
-      tableData?.table_id === dinepaymentRecieved?.order?.table_id?.toString()
-    ) {
-      setPaymentIsPaid(true);
-    } else {
-      setPaymentIsPaid(false);
+  // setpaymentobjtable([...paymentobjtable , tableData?.custom_bill_number]);
+
+  // setpaymentobjrecieve([
+  //   ...paymentobjrecieve,
+  //   dinepaymentRecieved?.order?.custom_bill_number?.toString(),
+  // ]);
+  //for(let  i of paymentobjrecieve){
+  // if(paymentobjrecieve[i]== tableData?.custom_bill_number){
+  //   console.log(i,'mohan')
+  // }  console.log('raja')
+  //}
+
+  // }, [tableData, dinepaymentRecieved]);
+  // useEffect(()=>{
+  //   for(let i=0;i<paymentobjrecieve.length;i++){
+  //     if(paymentobjrecieve[i]== tableData?.custom_bill_number){
+  //           setPaymentIsPaid(true);
+  //         } else {
+  //           setPaymentIsPaid(false);
+  //         }
+  //         console.log(i,paymentobjrecieve[i])
+  // }
+  // })
+
+  //right userEffect
+  //  useEffect(() => {
+  //   console.log(tableData?.custom_bill_number, "tabledatacustome bill numer");
+  //   console.log(
+  //     dinepaymentRecieved?.order?.custom_bill_number?.toString(),
+  //     "payment customer bill number"
+  //   );
+  //   if (
+  //     tableData?.custom_bill_number ==
+  //     dinepaymentRecieved?.order?.custom_bill_number?.toString()
+  //   ) {
+  //     setPaymentIsPaid(true);
+  //   } else {
+  //     setPaymentIsPaid(false);
+  //   }
+  // }, [tableData, dinepaymentRecieved]);
+
+  // useEffect(()=>{
+
+  //   console.log(tableData?.custom_bill_number,'from conditon table')
+  //  for(let i  of paymentobjrecieve){
+  //   console.log( paymentobjrecieve[i],'from condition')
+  //   if(tableData?.custom_bill_number==paymentobjrecieve[i])
+  //   {
+  //        setPaymentIsPaid(true);
+  //     } else {
+  //           setPaymentIsPaid(false);
+  //       }
+  // }
+  // },[tableData,dinepaymentRecieved])
+
+  // console.log(paymentobjtable, "payment paymentobjtable ");
+
+  //  console.log(paymentobjrecieve, "paymentobjrecieve");
+
+  /* payment end*/
+
+  /*payment obj*/
+
+  for (let i = 0; i < dinepaymentRecieved.length; i++) {
+    payobj[dinepaymentRecieved[i]?.order?.table_id] =
+      dinepaymentRecieved[i]?.order?.custom_bill_number;
+  }
+  useEffect(() => {
+    for (let key in payobj) {
+      if (
+        key == tableData?.table_id &&
+        payobj[key] == tableData?.custom_bill_number
+      ) {
+        setPaymentIsPaid(true);
+      } else {
+        setPaymentIsPaid(false);
+      }
     }
   }, [tableData, dinepaymentRecieved]);
 
+  console.log(payobj, "from payobj");
+
+  /* payment obh end */
   useEffect(() => {
     const qrcodegenrateFunction = () => {
       try {
@@ -275,9 +347,9 @@ function CustomerPage(props) {
     <div style={{ display: "flex" }}>
       <UpcomingOffer />
       <div className={classes.main}>
-         <button onClick={() => paymentFunHandler1()}>1</button> 
-         <button onClick={() => paymentFunHandler2()}>2</button> 
-         <button onClick={() => paymentFunHandler3()}>3</button>   
+        {/* <button onClick={() => paymentFunHandler1()}>1</button>
+        <button onClick={() => paymentFunHandler2()}>2</button>
+        <button onClick={() => paymentFunHandler3()}>3</button> */}
         <div className={classes.header}>
           <h4>
             BILL NUMBER: {tableData.order_id > 0 ? tableData.order_id : null}
@@ -355,7 +427,7 @@ function CustomerPage(props) {
             </table>
           </div>
         </div>
-        {dinepaymentRecieved?.msg && paymentIsPaid ? (
+        {paymentIsPaid ? (
           <div className={classes.paymentRecieved}>
             <CheckCircleIcon />
             <h6>Payment Successful!</h6>
